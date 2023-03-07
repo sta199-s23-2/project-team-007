@@ -36,7 +36,7 @@ Our research question sparked from a fivethirtyeight.com article that described 
 
 To further explore female representation and characterization in the film industry, we want to investigate the relationship between film budget and profit in regard to whether films pass the Bechdel test. 
 
-(article: https://projects.fivethirtyeight.com/next-bechdel/) \
+(article: https://projects.fivethirtyeight.com/next-bechdel/)\
 \
 Glimpse of data
 
@@ -49,36 +49,45 @@ glimpse(bechdel)
 
 # Data 2
 
-## Introduction and data
+## Introduction and data: **Wealth and Income**
 
--   Identify the source of the data.
+-   The source of this dataset is the Urban Institute and the US Census.
 
--   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
+-   Overall the U.S. Census Bureau states that there are three methods of data collection-- mail, Internet collection, and collection from state sources.
 
--   Write a brief description of the observations.
+-   In the dataset, there are 2,916 observations with variables surrounding race, income statistics, and year.
+
+-   For ethics, since each observation is anonymous, there should be no privacy concerns. However, U.S. Census data has historically underrepresented marginalized groups so the analysis may not be a complete reflection of the U.S as a whole.
 
 ## Research question
 
--   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
+-   Research Question: How has the relationship between race and income distribution changed overtime in the U.S?
 
--   A description of the research topic along with a concise statement of your hypotheses on this topic.
+-   Overall, this question is important as the U.S has changed dramatically across it\'s history. More specifically, many marginalized groups have been impacted by certain events and policies-- Jim Crow laws, red-lining, the Great Recession, etc. Viewing the long-term and short-term impacts of these events could help improve future policies and actions by the government.
 
--   Identify the types of variables in your research question. Categorical? Quantitative?
+-   This research topic of Race and Wealth is constantly evolving-- incorporating new variables and details as society learns more about the history about the U.S. My hypothesis is that overall marginalized groups wealth have increased throughout history with the distribution within these groups widening.
 
-## Literature
+-   The types of variables in my research question include year (quantitive), race (categorical), income mean (quantitative), income bracket (categorical), and income distribution (quantitative).
 
--   Find one published credible article on the topic you are interested in researching.
+    ## Literature
 
--   Provide a one paragraph summary about the article.
+```{=html}
+<!-- -->
+```
+-   <https://www.federalreserve.gov/econres/notes/feds-notes/disparities-in-wealth-by-race-and-ethnicity-in-the-2019-survey-of-consumer-finances-20200928.html> 
 
--   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
+-   Overall this article looks at recent trends in wealth between different races in the U.S. It found that Black and Hispanic families\' incomes rose dramatically after experiencing the aftermath Great Recession more severely. Additionally, it found that within every race, wealth was significantly higher for middle-aged families compared to older and younger families. However, the disparity between these subgroups is still apparent. Finally the article details the disparity in retirement account ownership between different races.
+
+-   Overall this research paper looks at many factors contributing to wealth in a short period of time (2007-2019). My analysis however will do the opposite- look at just one factor, race, and see how that impacts income distribution over a long period of time (1963 - 2019).
 
 ## Glimpse of data
 
 ```{r}
-#| label: load-data-2
+#| label: load-data-wealth-income
 
-# add code here
+income_distribution <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-02-09/income_distribution.csv')
+
+glimpse(income_distribution)
 ```
 
 # Data 3
