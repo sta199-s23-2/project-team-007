@@ -14,36 +14,37 @@ library(tidyverse)
 
 # Data 1
 
-## Introduction and data
+## Introduction and data: Bechdel Test Data
 
--   Identify the source of the data.
+This data is from fivethirtyeight.come, and was originally collected from IMBD movie data in 2017.
 
--   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
+The observations in this datasets are various movies, and the variables include: year (year movie was released), imdb (imdb code for movie), title (title of movie), test (whether it passes each criterion of the Bechdel test- contains two named female characters, do these two women speak to each other, do they speak to each other about something other than a man), binary (whether the movie passes the Bechdel test) budget (movie budget), domgross (the domestic gross product of the movie, intgross (the international gross product of the movie), and the budget/GDP of the movies converted to 2013 dollars. 
 
--   Write a brief description of the observations.
+## Research question: Bechdel Test Data
 
-## Research question
+Do movies that pass the Bechdel test have higher or lower budgets than movies that fail the Bechdel test? Do the movies that pass this tend to gross larger profits than those that fail, and is there a difference between this on the domestic and international scale?
 
--   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
+This question is important as it relates to the level of female representation in the film industry, and the value that the film industry places on female actors, characters, and storylines in film. 
 
--   A description of the research topic along with a concise statement of your hypotheses on this topic.
+Our group is researching the relationship between film budget/profit compared to whether these films being analyzed pass the Bechdel test. We hypothesize that movies that fail the Bechdel test will tend to have lower budgets than movies that pass the Bechdel test. 
 
--   Identify the types of variables in your research question. Categorical? Quantitative?
+There are both quantitative variables and categorical variables at use in our research question. For example, whether a movie passes none, some, or all of the Bechdel test is a categorical variable, while the recorded budget of a movie is a quantitative variable. 
 
-## Literature 
+## Literature: Bechdel Test Data:
 
--   Find one published credible article on the topic you are interested in researching.
+Our research question sparked from a fivethirtyeight.com article that described how ⅓ of the top 50 movies from 2016 failed the Bechdel Test. The Bechdel Test is a simple test that assesses movies based on three criteria: does a movie have at least two named female characters? Do these named characters have at least one conversation? Is this conversation about something that is not about a man? We were surprised by the number of movies that did not pass this seemingly basic test, even in 2016. This article further explored diversity in the film industry, testing movies on whether the on-set crew were 50% women (of which none of these top 50 movies passed), and explored the racial diversity in the film industry. 
 
--   Provide a one paragraph summary about the article.
+To further explore female representation and characterization in the film industry, we want to investigate the relationship between film budget and profit in regard to whether films pass the Bechdel test. 
 
--   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
-
-## Glimpse of data
+(article: https://projects.fivethirtyeight.com/next-bechdel/) \
+\
+Glimpse of data
 
 ```{r}
 #| label: load-data-1
 
-# add code here
+bechdel<- read.csv(file = 'data/bechdel_clean.csv')
+glimpse(bechdel)
 ```
 
 # Data 2
@@ -64,7 +65,7 @@ library(tidyverse)
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
@@ -98,7 +99,7 @@ library(tidyverse)
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
