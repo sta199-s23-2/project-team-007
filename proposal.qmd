@@ -63,7 +63,7 @@ glimpse(bechdel)
 
 -   Research Question: How has the relationship between race and income distribution changed overtime in the U.S?
 
--   Overall, this question is important as the U.S has changed dramatically across it\'s history. More specifically, many marginalized groups have been impacted by certain events and policies-- Jim Crow laws, red-lining, the Great Recession, etc. Viewing the long-term and short-term impacts of these events could help improve future policies and actions by the government.
+-   Overall, this question is important as the U.S has changed dramatically across it's history. More specifically, many marginalized groups have been impacted by certain events and policies-- Jim Crow laws, red-lining, the Great Recession, etc. Viewing the long-term and short-term impacts of these events could help improve future policies and actions by the government.
 
 -   This research topic of Race and Wealth is constantly evolving-- incorporating new variables and details as society learns more about the history about the U.S. My hypothesis is that overall marginalized groups wealth have increased throughout history with the distribution within these groups widening.
 
@@ -71,12 +71,11 @@ glimpse(bechdel)
 
     ## Literature
 
-```{=html}
 <!-- -->
-```
+
 -   <https://www.federalreserve.gov/econres/notes/feds-notes/disparities-in-wealth-by-race-and-ethnicity-in-the-2019-survey-of-consumer-finances-20200928.html> 
 
--   Overall this article looks at recent trends in wealth between different races in the U.S. It found that Black and Hispanic families\' incomes rose dramatically after experiencing the aftermath Great Recession more severely. Additionally, it found that within every race, wealth was significantly higher for middle-aged families compared to older and younger families. However, the disparity between these subgroups is still apparent. Finally the article details the disparity in retirement account ownership between different races.
+-   Overall this article looks at recent trends in wealth between different races in the U.S. It found that Black and Hispanic families' incomes rose dramatically after experiencing the aftermath Great Recession more severely. Additionally, it found that within every race, wealth was significantly higher for middle-aged families compared to older and younger families. However, the disparity between these subgroups is still apparent. Finally the article details the disparity in retirement account ownership between different races.
 
 -   Overall this research paper looks at many factors contributing to wealth in a short period of time (2007-2019). My analysis however will do the opposite- look at just one factor, race, and see how that impacts income distribution over a long period of time (1963 - 2019).
 
@@ -94,32 +93,34 @@ glimpse(income_distribution)
 
 ## Introduction and data
 
--   Identify the source of the data.
+The source of the dataset is from data world as part of tidy tuesday week 29 2020.
 
--   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
+The data was collected by watching every Scooby Doo episode and movie and tracking certain data points
 
--   Write a brief description of the observations.
+The observations are each episode or movie of the show and the variables include how many times a certain character was captured, who revealed the monster, if someone said a specific line, and many other aspects commonly found in episodes
 
 ## Research question
 
--   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
+How does the role of gender (both of culprit and main character) change over time (the seasons of the show)? We were thinking of potentially going the route of number of occourance differences between multiple variables but if needed that could be swapped.
 
--   A description of the research topic along with a concise statement of your hypotheses on this topic.
+The mystery genre has evolved a lot in the past few years with the subgenre of Murder Mystery being very popular. As Scooby Doo is an older show that has been around for many years, we want to see if there is a difference in the gender roles played by the characters in Scooby Doo as time has passed. As other films and shows have started to have more female leads, we were wondering if older shows would slowly adapt to that syle. My hypothesis is that in the later seasons of the we will see more occurrences of the female characters doing generally more actions (revealing the monster, being the culprit, etc...)
 
--   Identify the types of variables in your research question. Categorical? Quantitative?
+The types of variables in the research question are who revealed the monster(categorical) gender of the culprit (categorical), who was caught by the monster (categorical), who actually caught the monster(categorical), and if the culprit was arrested(categorical)
 
 ## Literature
 
--   Find one published credible article on the topic you are interested in researching.
+Ahmed, S., & Wahab, J. A. (2014). Animation and socialization process: Gender role portrayal on cartoon network. Asian Social Science, 10(3), 44.
 
--   Provide a one paragraph summary about the article.
+This article talks about how gender roles are portrayed on Cartoon Network shows. The article concludes, that after looking at animated series and cartoons broadcasted from January to July in 2013, that Cartoon Network portrays male and female characters in a biased and stereotypical way. They claim that this plays an important role in shaping and constructing ideas about gender roles, especially in the minds of younger children who are watching the shows. While this does give good evidence, I think the timeline of only using data from 6 months does not tell the whole story of the evolution of how gender roles are portrayed in television.
 
--   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
+The article mentioned above is almost 10 years old at this point and only analyzes a small portion of time. Scooby Doo has been around for over 50 years and in that time may have changed as people became more aware of the gender roles and how commonly they are stereotyped in television. Our research question will build off this article by conducting a similar test, but it will be focus on a longer scale and how one specific show has changed over time.
 
 ## Glimpse of data
 
 ```{r}
 #| label: load-data-3
 
-# add code here
+scoobyDoo <- read.csv(file = 'data/scoobydoo.csv')
+
+glimpse(scoobyDoo)
 ```
