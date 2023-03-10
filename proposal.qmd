@@ -84,7 +84,7 @@ glimpse(bechdel)
 ```{r}
 #| label: load-data-wealth-income
 
-income_distribution <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-02-09/income_distribution.csv')
+income_distribution <- read.csv(file = 'data/income_distribution.csv')
 
 glimpse(income_distribution)
 ```
