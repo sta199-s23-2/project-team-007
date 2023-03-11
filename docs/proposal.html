@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.36">
+<meta name="generator" content="quarto-1.1.251">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -157,30 +162,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
   <li><a href="#data-1" id="toc-data-1" class="nav-link active" data-scroll-target="#data-1">Data 1</a>
   <ul class="collapse">
-  <li><a href="#introduction-and-data" id="toc-introduction-and-data" class="nav-link" data-scroll-target="#introduction-and-data">Introduction and data</a></li>
-  <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question">Research question</a></li>
-  <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature">Literature</a></li>
-  <li><a href="#glimpse-of-data" id="toc-glimpse-of-data" class="nav-link" data-scroll-target="#glimpse-of-data">Glimpse of data</a></li>
+  <li><a href="#introduction-and-data-bechdel-test-data" id="toc-introduction-and-data-bechdel-test-data" class="nav-link" data-scroll-target="#introduction-and-data-bechdel-test-data">Introduction and data: Bechdel Test Data</a></li>
+  <li><a href="#research-question-bechdel-test-data" id="toc-research-question-bechdel-test-data" class="nav-link" data-scroll-target="#research-question-bechdel-test-data">Research question: Bechdel Test Data</a></li>
+  <li><a href="#literature-bechdel-test-data" id="toc-literature-bechdel-test-data" class="nav-link" data-scroll-target="#literature-bechdel-test-data">Literature: Bechdel Test Data:</a></li>
   </ul></li>
   <li><a href="#data-2" id="toc-data-2" class="nav-link" data-scroll-target="#data-2">Data 2</a>
   <ul class="collapse">
-  <li><a href="#introduction-and-data-1" id="toc-introduction-and-data-1" class="nav-link" data-scroll-target="#introduction-and-data-1">Introduction and data</a></li>
-  <li><a href="#research-question-1" id="toc-research-question-1" class="nav-link" data-scroll-target="#research-question-1">Research question</a></li>
-  <li><a href="#literature-1" id="toc-literature-1" class="nav-link" data-scroll-target="#literature-1">Literature</a></li>
-  <li><a href="#glimpse-of-data-1" id="toc-glimpse-of-data-1" class="nav-link" data-scroll-target="#glimpse-of-data-1">Glimpse of data</a></li>
+  <li><a href="#introduction-and-data-wealth-and-income" id="toc-introduction-and-data-wealth-and-income" class="nav-link" data-scroll-target="#introduction-and-data-wealth-and-income">Introduction and data: <strong>Wealth and Income</strong></a></li>
+  <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question">Research question</a></li>
+  <li><a href="#glimpse-of-data" id="toc-glimpse-of-data" class="nav-link" data-scroll-target="#glimpse-of-data">Glimpse of data</a></li>
   </ul></li>
   <li><a href="#data-3" id="toc-data-3" class="nav-link" data-scroll-target="#data-3">Data 3</a>
   <ul class="collapse">
-  <li><a href="#introduction-and-data-2" id="toc-introduction-and-data-2" class="nav-link" data-scroll-target="#introduction-and-data-2">Introduction and data</a></li>
-  <li><a href="#research-question-2" id="toc-research-question-2" class="nav-link" data-scroll-target="#research-question-2">Research question</a></li>
-  <li><a href="#literature-2" id="toc-literature-2" class="nav-link" data-scroll-target="#literature-2">Literature</a></li>
-  <li><a href="#glimpse-of-data-2" id="toc-glimpse-of-data-2" class="nav-link" data-scroll-target="#glimpse-of-data-2">Glimpse of data</a></li>
+  <li><a href="#introduction-and-data" id="toc-introduction-and-data" class="nav-link" data-scroll-target="#introduction-and-data">Introduction and data</a></li>
+  <li><a href="#research-question-1" id="toc-research-question-1" class="nav-link" data-scroll-target="#research-question-1">Research question</a></li>
+  <li><a href="#literature-1" id="toc-literature-1" class="nav-link" data-scroll-target="#literature-1">Literature</a></li>
+  <li><a href="#glimpse-of-data-1" id="toc-glimpse-of-data-1" class="nav-link" data-scroll-target="#glimpse-of-data-1">Glimpse of data</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -207,115 +210,226 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.2.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyr' was built under R version 4.2.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'readr' was built under R version 4.2.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'purrr' was built under R version 4.2.2</code></pre>
-</div>
 </div>
 <section id="data-1" class="level1">
 <h1>Data 1</h1>
-<section id="introduction-and-data" class="level2">
-<h2 class="anchored" data-anchor-id="introduction-and-data">Introduction and data</h2>
-<ul>
-<li><p>Identify the source of the data.</p></li>
-<li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p></li>
-<li><p>Write a brief description of the observations.</p></li>
-</ul>
+<section id="introduction-and-data-bechdel-test-data" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-and-data-bechdel-test-data">Introduction and data: Bechdel Test Data</h2>
+<p>This data is from fivethirtyeight.come, and was originally collected from IMBD movie data in 2017.</p>
+<p>The observations in this datasets are various movies, and the variables include: year (year movie was released), imdb (imdb code for movie), title (title of movie), test (whether it passes each criterion of the Bechdel test- contains two named female characters, do these two women speak to each other, do they speak to each other about something other than a man), binary (whether the movie passes the Bechdel test) budget (movie budget), domgross (the domestic gross product of the movie, intgross (the international gross product of the movie), and the budget/GDP of the movies converted to 2013 dollars.&nbsp;</p>
 </section>
-<section id="research-question" class="level2">
-<h2 class="anchored" data-anchor-id="research-question">Research question</h2>
-<ul>
-<li>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</li>
-<li>A description of the research topic along with a concise statement of your hypotheses on this topic.</li>
-<li>Identify the types of variables in your research question. Categorical? Quantitative?</li>
-</ul>
+<section id="research-question-bechdel-test-data" class="level2">
+<h2 class="anchored" data-anchor-id="research-question-bechdel-test-data">Research question: Bechdel Test Data</h2>
+<p>Do movies that pass the Bechdel test have higher or lower budgets than movies that fail the Bechdel test? Do the movies that pass this tend to gross larger profits than those that fail, and is there a difference between this on the domestic and international scale?</p>
+<p>This question is important as it relates to the level of female representation in the film industry, and the value that the film industry places on female actors, characters, and storylines in film.&nbsp;</p>
+<p>Our group is researching the relationship between film budget/profit compared to whether these films being analyzed pass the Bechdel test. We hypothesize that movies that fail the Bechdel test will tend to have lower budgets than movies that pass the Bechdel test.&nbsp;</p>
+<p>There are both quantitative variables and categorical variables at use in our research question. For example, whether a movie passes none, some, or all of the Bechdel test is a categorical variable, while the recorded budget of a movie is a quantitative variable.&nbsp;</p>
 </section>
-<section id="literature" class="level2">
-<h2 class="anchored" data-anchor-id="literature">Literature</h2>
-<ul>
-<li><p>Find one published credible article on the topic you are interested in researching.</p></li>
-<li><p>Provide a one paragraph summary about the article.</p></li>
-<li><p>In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.</p></li>
-</ul>
-</section>
-<section id="glimpse-of-data" class="level2">
-<h2 class="anchored" data-anchor-id="glimpse-of-data">Glimpse of data</h2>
+<section id="literature-bechdel-test-data" class="level2">
+<h2 class="anchored" data-anchor-id="literature-bechdel-test-data">Literature: Bechdel Test Data:</h2>
+<p>Our research question sparked from a fivethirtyeight.com article that described how ⅓ of the top 50 movies from 2016 failed the Bechdel Test. The Bechdel Test is a simple test that assesses movies based on three criteria: does a movie have at least two named female characters? Do these named characters have at least one conversation? Is this conversation about something that is not about a man? We were surprised by the number of movies that did not pass this seemingly basic test, even in 2016. This article further explored diversity in the film industry, testing movies on whether the on-set crew were 50% women (of which none of these top 50 movies passed), and explored the racial diversity in the film industry.&nbsp;</p>
+<p>To further explore female representation and characterization in the film industry, we want to investigate the relationship between film budget and profit in regard to whether films pass the Bechdel test.&nbsp;</p>
+<p>(article: https://projects.fivethirtyeight.com/next-bechdel/)<br>
+<br>
+Glimpse of data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>bechdel<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">'data/bechdel_test.csv'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(bechdel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,794
+Columns: 34
+$ year          &lt;int&gt; 2013, 2012, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 20…
+$ imdb          &lt;chr&gt; "tt1711425", "tt1343727", "tt2024544", "tt1272878", "tt0…
+$ title         &lt;chr&gt; "21 &amp;amp; Over", "Dredd 3D", "12 Years a Slave", "2 Guns…
+$ test          &lt;chr&gt; "notalk", "ok-disagree", "notalk-disagree", "notalk", "m…
+$ clean_test    &lt;chr&gt; "notalk", "ok", "notalk", "notalk", "men", "men", "notal…
+$ binary        &lt;chr&gt; "FAIL", "PASS", "FAIL", "FAIL", "FAIL", "FAIL", "FAIL", …
+$ budget        &lt;int&gt; 13000000, 45000000, 20000000, 61000000, 40000000, 225000…
+$ domgross      &lt;chr&gt; "25682380", "13414714", "53107035", "75612460", "9502021…
+$ intgross      &lt;chr&gt; "42195766", "40868994", "158607035", "132493015", "95020…
+$ code          &lt;chr&gt; "2013FAIL", "2012PASS", "2013FAIL", "2013FAIL", "2013FAI…
+$ budget_2013   &lt;int&gt; 13000000, 45658735, 20000000, 61000000, 40000000, 225000…
+$ domgross_2013 &lt;chr&gt; "25682380", "13611086", "53107035", "75612460", "9502021…
+$ intgross_2013 &lt;chr&gt; "42195766", "41467257", "158607035", "132493015", "95020…
+$ period_code   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+$ decade_code   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+$ imdb_id       &lt;int&gt; 1711425, 1343727, 2024544, 1272878, 453562, 1335975, 160…
+$ plot          &lt;chr&gt; NA, NA, "In the antebellum United States, Solomon Northu…
+$ rated         &lt;chr&gt; NA, NA, "R", "R", "PG-13", "PG-13", "R", "R", "PG-13", "…
+$ response      &lt;chr&gt; NA, NA, "True", "True", "True", "True", "True", "True", …
+$ language      &lt;chr&gt; NA, NA, "English", "English, Spanish", "English", "Engli…
+$ country       &lt;chr&gt; NA, NA, "USA, UK", "USA", "USA", "USA", "USA", "UK", "US…
+$ writer        &lt;chr&gt; NA, NA, "John Ridley (screenplay), Solomon Northup (base…
+$ metascore     &lt;int&gt; NA, NA, 97, 55, 62, 29, 28, 55, 48, 33, 90, 58, 52, 78, …
+$ imdb_rating   &lt;dbl&gt; NA, NA, 8.3, 6.8, 7.6, 6.6, 5.4, 7.8, 5.7, 5.0, 7.5, 7.4…
+$ director      &lt;chr&gt; NA, NA, "Steve McQueen", "Baltasar Kormákur", "Brian Hel…
+$ released      &lt;chr&gt; NA, NA, "08 Nov 2013", "02 Aug 2013", "12 Apr 2013", "25…
+$ actors        &lt;chr&gt; NA, NA, "Chiwetel Ejiofor, Dwight Henry, Dickie Gravois,…
+$ genre         &lt;chr&gt; NA, NA, "Biography, Drama, History", "Action, Comedy, Cr…
+$ awards        &lt;chr&gt; NA, NA, "Won 3 Oscars. Another 131 wins &amp; 137 nomination…
+$ runtime       &lt;chr&gt; NA, NA, "134 min", "109 min", "128 min", "118 min", "98 …
+$ type          &lt;chr&gt; NA, NA, "movie", "movie", "movie", "movie", "movie", "mo…
+$ poster        &lt;chr&gt; NA, NA, "http://ia.media-imdb.com/images/M/MV5BMjExMTEzO…
+$ imdb_votes    &lt;chr&gt; NA, NA, "143,446", "87,301", "43,608", "25,735", "123,83…
+$ error         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</code></pre>
+</div>
 </div>
 </section>
 </section>
 <section id="data-2" class="level1">
 <h1>Data 2</h1>
-<section id="introduction-and-data-1" class="level2">
-<h2 class="anchored" data-anchor-id="introduction-and-data-1">Introduction and data</h2>
+<section id="introduction-and-data-wealth-and-income" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-and-data-wealth-and-income">Introduction and data: <strong>Wealth and Income</strong></h2>
 <ul>
-<li><p>Identify the source of the data.</p></li>
-<li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p></li>
-<li><p>Write a brief description of the observations.</p></li>
+<li><p>The source of this dataset is the Urban Institute and the US Census.</p></li>
+<li><p>Overall the U.S. Census Bureau states that there are three methods of data collection– mail, Internet collection, and collection from state sources.</p></li>
+<li><p>In the dataset, there are 2,916 observations with variables surrounding race, income statistics, and year.</p></li>
+<li><p>For ethics, since each observation is anonymous, there should be no privacy concerns. However, U.S. Census data has historically underrepresented marginalized groups so the analysis may not be a complete reflection of the U.S as a whole.</p></li>
 </ul>
 </section>
-<section id="research-question-1" class="level2">
-<h2 class="anchored" data-anchor-id="research-question-1">Research question</h2>
+<section id="research-question" class="level2">
+<h2 class="anchored" data-anchor-id="research-question">Research question</h2>
 <ul>
-<li>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</li>
-<li>A description of the research topic along with a concise statement of your hypotheses on this topic.</li>
-<li>Identify the types of variables in your research question. Categorical? Quantitative?</li>
+<li><p>Research Question: How has the relationship between race and income distribution changed overtime in the U.S?</p></li>
+<li><p>Overall, this question is important as the U.S has changed dramatically across it’s history. More specifically, many marginalized groups have been impacted by certain events and policies– Jim Crow laws, red-lining, the Great Recession, etc. Viewing the long-term and short-term impacts of these events could help improve future policies and actions by the government.</p></li>
+<li><p>This research topic of Race and Wealth is constantly evolving– incorporating new variables and details as society learns more about the history about the U.S. My hypothesis is that overall marginalized groups wealth have increased throughout history with the distribution within these groups widening.</p></li>
+<li><p>The types of variables in my research question include year (quantitive), race (categorical), income mean (quantitative), income bracket (categorical), and income distribution (quantitative).</p>
+<h2 id="literature" class="anchored">Literature</h2></li>
+</ul>
+<!-- -->
+<ul>
+<li><p><a href="https://www.federalreserve.gov/econres/notes/feds-notes/disparities-in-wealth-by-race-and-ethnicity-in-the-2019-survey-of-consumer-finances-20200928.html" class="uri">https://www.federalreserve.gov/econres/notes/feds-notes/disparities-in-wealth-by-race-and-ethnicity-in-the-2019-survey-of-consumer-finances-20200928.html</a>&nbsp;</p></li>
+<li><p>Overall this article looks at recent trends in wealth between different races in the U.S. It found that Black and Hispanic families’ incomes rose dramatically after experiencing the aftermath Great Recession more severely. Additionally, it found that within every race, wealth was significantly higher for middle-aged families compared to older and younger families. However, the disparity between these subgroups is still apparent. Finally the article details the disparity in retirement account ownership between different races.</p></li>
+<li><p>Overall this research paper looks at many factors contributing to wealth in a short period of time (2007-2019). My analysis however will do the opposite- look at just one factor, race, and see how that impacts income distribution over a long period of time (1963 - 2019).</p></li>
 </ul>
 </section>
-<section id="literature-1" class="level2">
-<h2 class="anchored" data-anchor-id="literature-1">Literature</h2>
-<ul>
-<li><p>Find one published credible article on the topic you are interested in researching.</p></li>
-<li><p>Provide a one paragraph summary about the article.</p></li>
-<li><p>In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.</p></li>
-</ul>
-</section>
-<section id="glimpse-of-data-1" class="level2">
-<h2 class="anchored" data-anchor-id="glimpse-of-data-1">Glimpse of data</h2>
+<section id="glimpse-of-data" class="level2">
+<h2 class="anchored" data-anchor-id="glimpse-of-data">Glimpse of data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>income_distribution <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">'data/income_distribution.csv'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(income_distribution)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 2,916
+Columns: 9
+$ year                &lt;int&gt; 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 20…
+$ race                &lt;chr&gt; "All Races", "All Races", "All Races", "All Races"…
+$ number              &lt;int&gt; 128451000, 128451000, 128451000, 128451000, 128451…
+$ income_median       &lt;int&gt; 68703, 68703, 68703, 68703, 68703, 68703, 68703, 6…
+$ income_med_moe      &lt;int&gt; 904, 904, 904, 904, 904, 904, 904, 904, 904, 704, …
+$ income_mean         &lt;int&gt; 98088, 98088, 98088, 98088, 98088, 98088, 98088, 9…
+$ income_mean_moe     &lt;int&gt; 1042, 1042, 1042, 1042, 1042, 1042, 1042, 1042, 10…
+$ income_bracket      &lt;chr&gt; "Under $15,000", "$15,000 to $24,999", "$25,000 to…
+$ income_distribution &lt;dbl&gt; 9.1, 8.0, 8.3, 11.7, 16.5, 12.3, 15.5, 8.3, 10.3, …</code></pre>
+</div>
 </div>
 </section>
 </section>
 <section id="data-3" class="level1">
 <h1>Data 3</h1>
-<section id="introduction-and-data-2" class="level2">
-<h2 class="anchored" data-anchor-id="introduction-and-data-2">Introduction and data</h2>
-<ul>
-<li><p>Identify the source of the data.</p></li>
-<li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p></li>
-<li><p>Write a brief description of the observations.</p></li>
-</ul>
+<section id="introduction-and-data" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-and-data">Introduction and data</h2>
+<p>The source of the dataset is from data world as part of tidy tuesday week 29 2020.</p>
+<p>The data was collected by watching every Scooby Doo episode and movie and tracking certain data points</p>
+<p>The observations are each episode or movie of the show and the variables include how many times a certain character was captured, who revealed the monster, if someone said a specific line, and many other aspects commonly found in episodes</p>
 </section>
-<section id="research-question-2" class="level2">
-<h2 class="anchored" data-anchor-id="research-question-2">Research question</h2>
-<ul>
-<li>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</li>
-<li>A description of the research topic along with a concise statement of your hypotheses on this topic.</li>
-<li>Identify the types of variables in your research question. Categorical? Quantitative?</li>
-</ul>
+<section id="research-question-1" class="level2">
+<h2 class="anchored" data-anchor-id="research-question-1">Research question</h2>
+<p>How does the role of gender (both of culprit and main character) change over time (the seasons of the show)? We were thinking of potentially going the route of number of occourance differences between multiple variables but if needed that could be swapped.</p>
+<p>The mystery genre has evolved a lot in the past few years with the subgenre of Murder Mystery being very popular. As Scooby Doo is an older show that has been around for many years, we want to see if there is a difference in the gender roles played by the characters in Scooby Doo as time has passed. As other films and shows have started to have more female leads, we were wondering if older shows would slowly adapt to that syle. My hypothesis is that in the later seasons of the we will see more occurrences of the female characters doing generally more actions (revealing the monster, being the culprit, etc…)</p>
+<p>The types of variables in the research question are who revealed the monster(categorical) gender of the culprit (categorical), who was caught by the monster (categorical), who actually caught the monster(categorical), and if the culprit was arrested(categorical)</p>
 </section>
-<section id="literature-2" class="level2">
-<h2 class="anchored" data-anchor-id="literature-2">Literature</h2>
-<ul>
-<li><p>Find one published credible article on the topic you are interested in researching.</p></li>
-<li><p>Provide a one paragraph summary about the article.</p></li>
-<li><p>In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.</p></li>
-</ul>
+<section id="literature-1" class="level2">
+<h2 class="anchored" data-anchor-id="literature-1">Literature</h2>
+<p>Ahmed, S., &amp; Wahab, J. A. (2014). Animation and socialization process: Gender role portrayal on cartoon network. Asian Social Science, 10(3), 44.</p>
+<p>This article talks about how gender roles are portrayed on Cartoon Network shows. The article concludes, that after looking at animated series and cartoons broadcasted from January to July in 2013, that Cartoon Network portrays male and female characters in a biased and stereotypical way. They claim that this plays an important role in shaping and constructing ideas about gender roles, especially in the minds of younger children who are watching the shows. While this does give good evidence, I think the timeline of only using data from 6 months does not tell the whole story of the evolution of how gender roles are portrayed in television.</p>
+<p>The article mentioned above is almost 10 years old at this point and only analyzes a small portion of time. Scooby Doo has been around for over 50 years and in that time may have changed as people became more aware of the gender roles and how commonly they are stereotyped in television. Our research question will build off this article by conducting a similar test, but it will be focus on a longer scale and how one specific show has changed over time.</p>
 </section>
-<section id="glimpse-of-data-2" class="level2">
-<h2 class="anchored" data-anchor-id="glimpse-of-data-2">Glimpse of data</h2>
+<section id="glimpse-of-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="glimpse-of-data-1">Glimpse of data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>scoobyDoo <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">'data/scoobydoo.csv'</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(scoobyDoo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 603
+Columns: 75
+$ index                    &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14…
+$ series_name              &lt;chr&gt; "Scooby Doo, Where Are You!", "Scooby Doo, Wh…
+$ network                  &lt;chr&gt; "CBS", "CBS", "CBS", "CBS", "CBS", "CBS", "CB…
+$ season                   &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1", "1", …
+$ title                    &lt;chr&gt; "What a Night for a Knight", "A Clue for Scoo…
+$ imdb                     &lt;chr&gt; "8.1", "8.1", "8", "7.8", "7.5", "8.4", "7.6"…
+$ engagement               &lt;chr&gt; "556", "479", "455", "426", "391", "384", "35…
+$ date_aired               &lt;chr&gt; "1969-09-13", "1969-09-20", "1969-09-27", "19…
+$ run_time                 &lt;int&gt; 21, 22, 21, 21, 21, 21, 21, 21, 21, 21, 21, 2…
+$ format                   &lt;chr&gt; "TV Series", "TV Series", "TV Series", "TV Se…
+$ monster_name             &lt;chr&gt; "Black Knight", "Ghost of Cptn. Cuttler", "Ph…
+$ monster_gender           &lt;chr&gt; "Male", "Male", "Male", "Male", "Female", "Ma…
+$ monster_type             &lt;chr&gt; "Possessed Object", "Ghost", "Ghost", "Ancien…
+$ monster_subtype          &lt;chr&gt; "Suit", "Suit", "Phantom", "Miner", "Witch Do…
+$ monster_species          &lt;chr&gt; "Object", "Human", "Human", "Human", "Human",…
+$ monster_real             &lt;chr&gt; "FALSE", "FALSE", "FALSE", "FALSE", "FALSE", …
+$ monster_amount           &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 2, 1, 1, …
+$ caught_fred              &lt;chr&gt; "FALSE", "FALSE", "FALSE", "TRUE", "FALSE", "…
+$ caught_daphnie           &lt;chr&gt; "FALSE", "FALSE", "FALSE", "FALSE", "FALSE", …
+$ caught_velma             &lt;chr&gt; "FALSE", "FALSE", "FALSE", "FALSE", "FALSE", …
+$ caught_shaggy            &lt;chr&gt; "TRUE", "TRUE", "FALSE", "FALSE", "FALSE", "F…
+$ caught_scooby            &lt;chr&gt; "TRUE", "FALSE", "TRUE", "FALSE", "TRUE", "FA…
+$ captured_fred            &lt;chr&gt; "FALSE", "TRUE", "FALSE", "FALSE", "FALSE", "…
+$ captured_daphnie         &lt;chr&gt; "FALSE", "TRUE", "FALSE", "FALSE", "FALSE", "…
+$ captured_velma           &lt;chr&gt; "FALSE", "TRUE", "FALSE", "FALSE", "FALSE", "…
+$ captured_shaggy          &lt;chr&gt; "FALSE", "FALSE", "FALSE", "FALSE", "FALSE", …
+$ captured_scooby          &lt;chr&gt; "FALSE", "FALSE", "FALSE", "FALSE", "TRUE", "…
+$ unmask_fred              &lt;chr&gt; "FALSE", "TRUE", "TRUE", "TRUE", "FALSE", "TR…
+$ unmask_daphnie           &lt;chr&gt; "FALSE", "FALSE", "FALSE", "FALSE", "FALSE", …
+$ unmask_velma             &lt;chr&gt; "FALSE", "FALSE", "FALSE", "FALSE", "FALSE", …
+$ unmask_shaggy            &lt;chr&gt; "FALSE", "FALSE", "FALSE", "FALSE", "FALSE", …
+$ unmask_scooby            &lt;chr&gt; "TRUE", "FALSE", "FALSE", "FALSE", "TRUE", "F…
+$ snack_fred               &lt;chr&gt; "TRUE", "FALSE", "TRUE", "FALSE", "FALSE", "T…
+$ snack_daphnie            &lt;chr&gt; "FALSE", "FALSE", "FALSE", "TRUE", "TRUE", "F…
+$ snack_velma              &lt;chr&gt; "FALSE", "TRUE", "FALSE", "FALSE", "FALSE", "…
+$ snack_shaggy             &lt;chr&gt; "FALSE", "FALSE", "FALSE", "FALSE", "FALSE", …
+$ snack_scooby             &lt;chr&gt; "FALSE", "FALSE", "FALSE", "FALSE", "FALSE", …
+$ unmask_other             &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
+$ caught_other             &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
+$ caught_not               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
+$ trap_work_first          &lt;chr&gt; "NULL", "FALSE", "FALSE", "TRUE", "NULL", "TR…
+$ setting_terrain          &lt;chr&gt; "Urban", "Coast", "Island", "Cave", "Desert",…
+$ setting_country_state    &lt;chr&gt; "United States", "United States", "United Sta…
+$ suspects_amount          &lt;int&gt; 2, 2, 0, 2, 1, 2, 1, 2, 1, 1, 1, 1, 2, 2, 1, …
+$ non_suspect              &lt;chr&gt; "FALSE", "TRUE", "TRUE", "FALSE", "FALSE", "F…
+$ arrested                 &lt;chr&gt; "TRUE", "TRUE", "TRUE", "TRUE", "TRUE", "TRUE…
+$ culprit_name             &lt;chr&gt; "Mr. Wickles", "Cptn. Cuttler", "Bluestone th…
+$ culprit_gender           &lt;chr&gt; "Male", "Male", "Male", "Male", "Male", "Male…
+$ culprit_amount           &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, …
+$ motive                   &lt;chr&gt; "Theft", "Theft", "Treasure", "Natural Resour…
+$ if_it_wasnt_for          &lt;chr&gt; "NULL", "NULL", "NULL", "NULL", "NULL", "NULL…
+$ and_that                 &lt;chr&gt; "NULL", "NULL", "NULL", "NULL", "NULL", "NULL…
+$ door_gag                 &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
+$ number_of_snacks         &lt;chr&gt; "2", "1", "3", "2", "2", "4", "4", "0", "1", …
+$ split_up                 &lt;chr&gt; "1", "0", "0", "1", "0", "0", "1", "0", "0", …
+$ another_mystery          &lt;chr&gt; "1", "0", "0", "0", "1", "0", "0", "0", "0", …
+$ set_a_trap               &lt;chr&gt; "0", "0", "0", "0", "0", "0", "1", "1", "0", …
+$ jeepers                  &lt;chr&gt; "0", "0", "0", "0", "0", "1", "0", "0", "0", …
+$ jinkies                  &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0", …
+$ my_glasses               &lt;chr&gt; "1", "0", "0", "0", "1", "0", "0", "1", "0", …
+$ just_about_wrapped_up    &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0", …
+$ zoinks                   &lt;chr&gt; "1", "3", "1", "2", "0", "2", "1", "0", "0", …
+$ groovy                   &lt;chr&gt; "0", "0", "2", "1", "0", "0", "1", "0", "0", …
+$ scooby_doo_where_are_you &lt;chr&gt; "0", "1", "0", "0", "1", "0", "0", "1", "0", …
+$ rooby_rooby_roo          &lt;chr&gt; "1", "0", "0", "0", "0", "1", "1", "1", "1", …
+$ batman                   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
+$ scooby_dum               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
+$ scrappy_doo              &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
+$ hex_girls                &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
+$ blue_falcon              &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
+$ fred_va                  &lt;chr&gt; "Frank Welker", "Frank Welker", "Frank Welker…
+$ daphnie_va               &lt;chr&gt; "Stefanianna Christopherson", "Stefanianna Ch…
+$ velma_va                 &lt;chr&gt; "Nicole Jaffe", "Nicole Jaffe", "Nicole Jaffe…
+$ shaggy_va                &lt;chr&gt; "Casey Kasem", "Casey Kasem", "Casey Kasem", …
+$ scooby_va                &lt;chr&gt; "Don Messick", "Don Messick", "Don Messick", …</code></pre>
+</div>
 </div>
 
 
@@ -392,7 +506,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
