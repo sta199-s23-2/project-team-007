@@ -43,7 +43,7 @@ Glimpse of data
 ```{r}
 #| label: load-data-1
 
-bechdel<- read.csv(file = 'data/bechdel_clean.csv')
+bechdel<- read.csv(file = 'data/bechdel_test.csv')
 glimpse(bechdel)
 ```
 
