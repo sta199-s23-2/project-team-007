@@ -1,5 +1,5 @@
 ---
-title: "Project title"
+title: "The Relationship between Race and Wealth in U.S. history over Time"
 subtitle: "Report"
 format: html
 editor: visual
@@ -7,4 +7,27 @@ execute:
   echo: true
 ---
 
+## Introduction
+
 Add project writeup here.
+
+## Methodology
+
+```{r}
+#| label: load-packages
+#| message: false
+
+library(tidyverse)
+```
+
+```{r}
+#| label: load-data-wealth-and-income
+
+income_distribution <- read.csv(file = 'data/income_distribution.csv')
+
+glimpse(income_distribution)
+```
+
+Income distribution for every race. Facet wrap? Bar graph
+
+Stacked bar chart, below poverty and above poverty.
