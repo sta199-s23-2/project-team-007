@@ -23,9 +23,8 @@ library(tidyverse)
 ```{r}
 #| label: load-data-wealth-and-income
 
-income_distribution <- read.csv(file = 'data/income_distribution.csv')
-
-glimpse(income_distribution)
+bechdel<- read.csv(file = 'data/bechdel_test.csv')
+glimpse(bechdel)
 ```
 
 Visualizations Ideas:
