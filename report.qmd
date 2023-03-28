@@ -28,6 +28,12 @@ income_distribution <- read.csv(file = 'data/income_distribution.csv')
 glimpse(income_distribution)
 ```
 
-Income distribution for every race. Facet wrap? Bar graph
+Visualizations Ideas:
+
+Income distribution for every race. Facet wrap? or By group.
 
 Stacked bar chart, below poverty and above poverty.
+
+Graph where we manually draw poverty line?
+
+Summary Statistics ideas:
