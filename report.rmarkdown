@@ -7,11 +7,13 @@ execute:
   echo: true
 ---
 
+
 ## Introduction
 
 Add project writeup here.
 
 ## Methodology
+
 
 ```{r}
 #| label: load-packages
@@ -33,6 +35,7 @@ bechdel|>
   geom_point()
 ```
 
+
 Visualizations Ideas:
 
 Income distribution for every race. Facet wrap? or By group.
@@ -42,3 +45,4 @@ Stacked bar chart, below poverty and above poverty.
 Graph where we manually draw poverty line?
 
 Summary Statistics ideas:
+
