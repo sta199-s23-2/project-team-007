@@ -16,7 +16,6 @@ Research Question: Does a movie's passage of the Bechdel test influence its succ
 ```{r}
 #| label: load-packages
 #| message: false
-
 library(tidyverse)
 ```
 
@@ -31,9 +30,52 @@ bechdel
 bechdel|>
   ggplot(aes(x = year, y = budget, color = binary )) +
   geom_point()
+  ggplot(aes(x = year, y =budget))+
+  geom_point() +
+  facet_wrap(~binary) +
+  geom_smooth(method = lm, se = FALSE)
+```
+
+```{r}
+bechdel|>
+  ggplot(aes(x = year, fill = binary)) +
+  geom_bar(position = "fill")
+bechdel|>
+  filter(year == 1970)
+bechdel|>
+  ggplot(aes(x = year)) +
+  geom_histogram()
+
 ```
 
 Visualizations Ideas:
+
+are lower budget or higher budget movies more likely to pass?
+
+```{r}
+bechdel|>
+summarize(median = median(budget))
+low_budget <- bechdel |>
+  filter(budget<= 2.8e+07)
+high_budget <- bechdel |>
+  filter(budget>2.8e+07 )
+low_budget|>
+  ggplot(aes(x = budget, color = binary)) +
+  geom_histogram()
+high_budget |>
+  ggplot(aes(x = binary)) +
+  geom_bar() 
+
+
+bechdel$budg<- as.factor(ifelse(bechdel$budget<2.8e+07, "low", "high"))
+bechdel|>
+  ggplot(aes(x = budg, fill = binary)) +
+  geom_bar(position = "fill")
+bechdel|>
+  ggplot(aes(x = budget)) +
+  geom_boxplot()
+ 
+```
 
 Income distribution for every race. Facet wrap? or By group.
 
