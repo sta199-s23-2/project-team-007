@@ -29,7 +29,7 @@ bechdel
 
 ```{r}
 bechdel|>
-  ggplot(aes(x = year, y =budget, color = binary ))+
+  ggplot(aes(x = year, y = budget, color = binary )) +
   geom_point()
 ```
 
