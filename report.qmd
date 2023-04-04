@@ -9,7 +9,7 @@ execute:
 
 ## Introduction
 
-Add project writeup here.
+Research Question: Does a movie's passage of the Bechdel test influence its success?
 
 ## Methodology
 
