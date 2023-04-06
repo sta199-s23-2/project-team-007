@@ -27,6 +27,83 @@ bechdel
 ```
 
 ```{r}
+#| label: ella
+rated_r <- bechdel |>
+  filter(rated == 'R')
+rated_pg13 <- bechdel |>
+  filter(rated == 'PG-13')
+rated_pg <- bechdel |>
+  filter(rated == 'PG')
+rated_g <- bechdel |>
+  filter(rated == 'G')
+
+pass_g <- rated_g |>
+  filter(binary == 'PASS')
+pass_pg <- rated_pg |>
+  filter(binary == 'PASS')
+pass_pg13 <- rated_pg13 |>
+  filter(binary == 'PASS')
+pass_r <- rated_r |>
+  filter(binary == 'PASS')
+
+nrow(pass_g)/ nrow(rated_g)
+nrow(pass_pg)/ nrow(rated_pg)
+nrow(pass_pg13)/ nrow(rated_pg13)
+nrow(pass_r)/ nrow(rated_r)
+
+bechdel_movies <- bechdel |>
+  filter(type== 'movie') |>
+  drop_na(rated)
+
+bechdel_movies |>
+  filter(rated != 'N/A') |>
+  filter(rated != 'Not Rated') |>
+  mutate(
+    rating = fct_relevel(rated, 'G', 'PG', 'TV-PG', 'PG-13','TV-14', 'NC-17', 'R', 'X', 'Unrated')) |>
+  ggplot(aes(x = rating, fill = binary)) +
+  geom_bar(position = "fill")
+
+
+```
+
+```{r}
+#| label: ella2
+bechdel_rating <- bechdel |> 
+  group_by(rated) |>
+  summarize (n = n())
+bechdel |>
+  mutate(
+    imdb_low = imdb_rating< 2.5,
+    imdb_mid1 = between(imdb_rating, 2.5, 5.0),
+    imdb_mid2 = between(imdb_rating, 5.1, 7.5),
+    imdb_high = imdb_rating> 7.5,
+  )
+bechdel$type <- as.factor(ifelse(bechdel$imdb_rating < 2.5, 'low',
+                          ifelse(bechdel$imdb_rating < 5.0, 'mid1', 
+                          ifelse(bechdel$imdb_rating < 7.5, 'mid2', 
+                          ifelse(bechdel$imdb_rating < 10.0, 'high',0)))))
+bechdel |>
+  filter(type != 'NA') |>
+  ggplot(aes(x = type, fill = binary)) +
+  geom_bar(position = "fill") +
+  scale_x_discrete(limits = c("low", "mid1", "mid2", "high"))
+  
+
+  
+```
+
+Movies that fall withing the 2.5-5.0 ranking on IMDB are the most likely to Pass the bechdel test, while higher-ranked movies are less likely to pass than middle-ranked movies.
+
+```{r}
+bechdel |>
+  filter(type == 'high') |>
+  ggplot(aes(x = year, y = imdb_rating, color = binary)) +
+  geom_point()
+```
+
+g
+
+```{r}
 bechdel|>
   ggplot(aes(x = year, y = budget, color = binary )) +
   geom_point()
