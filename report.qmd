@@ -275,10 +275,18 @@ null_dist2 |>
 
 -   Assuming that the true mean IMDB rating for movies that fail the Bechdel test is equal to the the true mean IMDB rating for movies that pass the Bechdel test, the probability that we observe a sample mean of 0.284488 or greater is less than 0.001. Since our p-value is less than 0.05 we reject the null hypothesis and conclude the alternative hypothesis that movies that fail the Bechdel test have a greater true mean IMDB rating
 
+
+$\H_o:$ Winning an Oscar and passing the Bechdel test are independent of each other. 
+$\H_a$ Winning an Oscar and passing the Bechdel test are not independent of each other.
+
  
 ```{r}
 chisq.test(bechdel$oscar_won, bechdel$binary)
 ```
+ 
+ 
+After running our Chi-Squared we found the p value to be 0.8659. Because our p-value of 0.8659 is greater than our alpha value of 0.05, we fail to reject the null hypothesis and can not conclude that passing the Bechdel test and winning an Oscar have a correlation.
+ 
  
  ## Results
 
@@ -288,6 +296,6 @@ For income, we used a box plot and a difference in means distribution to find ou
 
 For ratings, we performed a chi-squared test and displayed a bar chart of imdb ratings.
 
-Finally for awards, we calculated a p-value of 0.8659. As a result, we fail to reject the null hypothesis that more Grammy's are won when movies fail the Bechdel Test.
+Finally for awards, we calculated a p-value of 0.8659. As a result, we fail to reject the null hypothesis that winning an Oscar and passing the Bechdel test are independent. Looking at our graph of Oscar Won vs. Bechdel test result, we see a similar trend. The proportion of movies that failed the Bechdel test were about the same whether or not the movies had one an Oscar. We conclude that passing the Bechdel test has little to no effect on whether a movie wins an Oscar.
 
 Despite the lack of evidence in awards, we found that the overall success in movies increases when such movies fail the Bechdel Test. As awards and ratings are chosen by a small committee with certain guidelines in place, it makes sense for them not to show a significant difference regarding the Bechdel Test as many biases and politics are at play.
