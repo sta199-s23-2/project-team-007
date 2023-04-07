@@ -15,7 +15,7 @@ Research Question: Does a movie's passage of the Bechdel test influence its succ
 
 This question is important as it relates to the level of female representation in the film industry, and the value that the film industry places on female actors, characters, and storylines in film.
 
-Across a general trend, we hypothesize movies that fail the Bechdel test will have higher success, stemming from higher ratings, gross income and awards.
+Across a general trend, we hypothesize movies that fail the Bechdel test will have higher success, stemming from higher ratings, gross income and awards. Although there has been progress in creating larger roles for women in film, society still values certain gender stereotypes in films and some of these still do very well in the box office.
 
 Data Information:
 
@@ -25,9 +25,9 @@ The observations in this datasets are various movies, and the variables include:
 
 Literature:
 
-Our research question sparked from a fivethirtyeight.com article that described how ⅓ of the top 50 movies from 2016 failed the Bechdel Test. The Bechdel Test is a simple test that assesses movies based on three criteria: does a movie have at least two named female characters? Do these named characters have at least one conversation? Is this conversation about something that is not about a man? We were surprised by the number of movies that did not pass this seemingly basic test, even in 2016. This article further explored diversity in the film industry, testing movies on whether the on-set crew were 50% women (of which none of these top 50 movies passed), and explored the racial diversity in the film industry. 
+Our research question sparked from a fivethirtyeight.com article that described how ⅓ of the top 50 movies from 2016 failed the Bechdel Test. The Bechdel Test is a simple test that assesses movies based on three criteria: does a movie have at least two named female characters? Do these named characters have at least one conversation? Is this conversation about something that is not about a man? We were surprised by the number of movies that did not pass this seemingly basic test, even in 2016. This article further explored diversity in the film industry, testing movies on whether the on-set crew were 50% women (of which none of these top 50 movies passed), and explored the racial diversity in the film industry.
 
-To further explore female representation and characterization in the film industry, we want to investigate the relationship between film budget and profit in regard to whether films pass the Bechdel test. 
+To further explore female representation and characterization in the film industry, we want to investigate the relationship between film budget and profit in regard to whether films pass the Bechdel test.
 
 (article: https://projects.fivethirtyeight.com/next-bechdel/)
 
