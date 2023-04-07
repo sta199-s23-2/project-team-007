@@ -193,6 +193,10 @@ null_dist |>
 
 -   Assuming that the true mean international gross incomes for movies that fail the Bechdel test is equal to the the true mean international gross incomes for movies that pass the Bechdel test, the probability that we observe a sample mean of 32064726 or greater is about 0.001. Since our p-value is less than 0.05 (0.001 \< 0.05) we reject the null hypothesis and conclude the alternative hypothesis that movies that fail the Bechdel test have a greater international gross income.
 
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 8814ea974f29d06dc5369553eadae8a54a653a43
 ```{r}
 chisq.test(bechdel$oscar_won, bechdel$binary)
 ```
