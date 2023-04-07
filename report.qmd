@@ -95,6 +95,7 @@ bechdel |>
 Movies that fall withing the 2.5-5.0 ranking on IMDB are the most likely to Pass the bechdel test, while higher-ranked movies are less likely to pass than middle-ranked movies.
 
 ```{r}
+#| label: point-imdb-year-binary
 bechdel |>
   filter(type == 'high') |>
   ggplot(aes(x = year, y = imdb_rating, color = binary)) +
@@ -104,16 +105,18 @@ bechdel |>
 g
 
 ```{r}
+#| label: point-year-budget-binary
 bechdel|>
   ggplot(aes(x = year, y = budget, color = binary )) +
   geom_point()
-  ggplot(aes(x = year, y =budget))+
+  ggplot(aes(x = year, y = budget))+
   geom_point() +
   facet_wrap(~binary) +
   geom_smooth(method = lm, se = FALSE)
 ```
 
 ```{r}
+#| label: histogram-year-binary
 bechdel|>
   ggplot(aes(x = year, fill = binary)) +
   geom_bar(position = "fill")
@@ -130,12 +133,13 @@ Visualizations Ideas:
 are lower budget or higher budget movies more likely to pass?
 
 ```{r}
+#| label: bar-median-budget
 bechdel|>
 summarize(median = median(budget))
 low_budget <- bechdel |>
   filter(budget<= 2.8e+07)
 high_budget <- bechdel |>
-  filter(budget>2.8e+07 )
+  filter(budget > 2.8e+07 )
 low_budget|>
   ggplot(aes(x = budget, color = binary)) +
   geom_histogram()
@@ -143,6 +147,11 @@ high_budget |>
   ggplot(aes(x = binary)) +
   geom_bar() 
 
+ 
+```
+
+```{r}
+#| label: boxplot-budget
 
 bechdel$budg<- as.factor(ifelse(bechdel$budget<2.8e+07, "low", "high"))
 bechdel|>
@@ -151,8 +160,6 @@ bechdel|>
 bechdel|>
   ggplot(aes(x = budget)) +
   geom_boxplot()
- 
 ```
-
 
 Summary Statistics ideas:
