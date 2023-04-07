@@ -49,45 +49,6 @@ bechdel<- read.csv(file = 'data/bechdel_test.csv')
 
 ```
 
-```{r}
-#| label: ella
-rated_r <- bechdel |>
-  filter(rated == 'R')
-rated_pg13 <- bechdel |>
-  filter(rated == 'PG-13')
-rated_pg <- bechdel |>
-  filter(rated == 'PG')
-rated_g <- bechdel |>
-  filter(rated == 'G')
-
-pass_g <- rated_g |>
-  filter(binary == 'PASS')
-pass_pg <- rated_pg |>
-  filter(binary == 'PASS')
-pass_pg13 <- rated_pg13 |>
-  filter(binary == 'PASS')
-pass_r <- rated_r |>
-  filter(binary == 'PASS')
-
-nrow(pass_g)/ nrow(rated_g)
-nrow(pass_pg)/ nrow(rated_pg)
-nrow(pass_pg13)/ nrow(rated_pg13)
-nrow(pass_r)/ nrow(rated_r)
-
-bechdel_movies <- bechdel |>
-  filter(type== 'movie') |>
-  drop_na(rated)
-
-bechdel_movies |>
-  filter(rated != 'N/A') |>
-  filter(rated != 'Not Rated') |>
-  mutate(
-    rating = fct_relevel(rated, 'G', 'PG', 'TV-PG', 'PG-13','TV-14', 'NC-17', 'R', 'X', 'Unrated')) |>
-  ggplot(aes(x = rating, fill = binary)) +
-  geom_bar(position = "fill")
-
-
-```
 
 ```{r}
 #| label: ella2
@@ -117,38 +78,18 @@ bechdel |>
 
 Movies that fall withing the 2.5-5.0 ranking on IMDB are the most likely to Pass the bechdel test, while higher-ranked movies are less likely to pass than middle-ranked movies.
 
-```{r}
-#| label: point-imdb-year-binary
-bechdel |>
-  filter(type == 'high') |>
-  ggplot(aes(x = year, y = imdb_rating, color = binary)) +
-  geom_point()
-```
 
-g
-
-```{r}
-#| label: point-year-budget-binary
-bechdel|>
-  ggplot(aes(x = year, y = budget, color = binary )) +
-  geom_point()
-bechdel|>
-  ggplot(aes(x = year, y = budget)) +
-  geom_point() +
-  facet_wrap(~binary) +
-  geom_smooth(method = lm, se = FALSE)
-```
 
 ```{r}
 #| label: histogram-year-binary
 bechdel|>
   ggplot(aes(x = year, fill = binary)) +
-  geom_bar(position = "fill")
+  geom_bar()
 bechdel|>
   filter(year == 1970)
 bechdel|>
   ggplot(aes(x = year)) +
-  geom_histogram()
+  geom_histogram(bins = 43)
 
 ```
 
@@ -156,15 +97,7 @@ Are lower budget or higher budget movies more likely to pass?
 
 ```{r}
 #| label: bar-median-budget
-bechdel|>
-summarize(median = median(budget))
-low_budget <- bechdel |>
-  filter(budget<= 2.8e+07)
-high_budget <- bechdel |>
-  filter(budget > 2.8e+07 )
-low_budget|>
-  ggplot(aes(x = budget, color = binary)) +
-  geom_histogram()
+
 high_budget |>
   ggplot(aes(x = binary)) +
   geom_bar() 
@@ -172,24 +105,16 @@ high_budget |>
  
 ```
 
-```{r}
-#| label: boxplot-budget
 
-bechdel$budg<- as.factor(ifelse(bechdel$budget<2.8e+07, "low", "high"))
-bechdel|>
-  ggplot(aes(x = budg, fill = binary)) +
-  geom_bar(position = "fill")
-bechdel|>
-  ggplot(aes(x = budget)) +
-  geom_boxplot()
-```
 
 ```{r}
 #|label: intgross
 
 bechdel |>
-  ggplot(aes(x = budg, y = as.numeric(intgross), color = binary)) +
-  geom_boxplot()
+  filter(!is.na(period_code)) |>
+  ggplot(aes(x = as.factor(period_code), y = as.numeric(intgross), color = binary)) +
+  geom_boxplot() +
+  ylim(0, 1.5e+09)
 ```
 
 ```{r}
@@ -217,7 +142,8 @@ Summary Statistics ideas:
 
 Chi Squared Test:
 
-$\H_o:$ IMDB Rating and Passing the Bechdel test are independent of each other $\H_a$ IMDB Rating and passing of the Bechdel test are not independent of each other
+$\H_o:$ IMDB Rating and Passing the Bechdel test are independent of each other 
+$\H_a$ IMDB Rating and passing of the Bechdel test are not independent of each other
 
 ```{r}
 #|label: chi-squared
@@ -274,3 +200,9 @@ null_dist |>
 ```
 
 -   Assuming that the true mean international gross incomes for movies that fail the Bechdel test is equal to the the true mean international gross incomes for movies that pass the Bechdel test, the probability that we observe a sample mean of 32064726 or greater is about 0.001. Since our p-value is less than 0.05 (0.001 \< 0.05) we reject the null hypothesis and conclude the alternative hypothesis that movies that fail the Bechdel test have a greater international gross income.
+
+
+```{r}
+chisq.test(bechdel$oscar_won, bechdel$binary)
+```
+
