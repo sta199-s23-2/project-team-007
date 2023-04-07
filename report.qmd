@@ -178,4 +178,21 @@ bechdel|>
   geom_boxplot()
 ```
 
+
+```{r}
+#|label: intgross
+
+bechdel |>
+  ggplot(aes(x = budg, y = as.numeric(intgross), color = binary)) +
+  geom_boxplot()
+```
+
 Summary Statistics ideas:
+
+
+Chi Squared Test:
+
+$\H_o:$  
+
+
+
