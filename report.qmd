@@ -154,10 +154,5 @@ bechdel|>
  
 ```
 
-Income distribution for every race. Facet wrap? or By group.
-
-Stacked bar chart, below poverty and above poverty.
-
-Graph where we manually draw poverty line?
 
 Summary Statistics ideas:
