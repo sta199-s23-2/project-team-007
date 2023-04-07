@@ -192,6 +192,27 @@ bechdel |>
   geom_boxplot()
 ```
 
+```{r}
+#|label: rearrange-data
+bechdel|>
+  filter(grepl('Oscar', awards)) |>
+  filter(grepl('Won', awards))
+
+bechdel = bechdel |>
+  mutate(oscar_won = if_else(grepl('Oscar', bechdel$awards), ifelse(grepl('Won', bechdel$awards), 'Y', 'N'),'N'))
+
+```
+```{r}
+#|label: oscar-wins
+
+bechdel |>
+  ggplot(aes(x = oscar_won, fill = binary)) +
+  geom_bar(position = "fill")
+```
+
+
+
+
 Summary Statistics ideas:
 
 Chi Squared Test:
