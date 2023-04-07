@@ -49,12 +49,18 @@ bechdel<- read.csv(file = 'data/bechdel_test.csv')
 
 ```
 
-
 ```{r}
-#|label: IMDB
+#| label: ella2
 bechdel_rating <- bechdel |> 
   group_by(rated) |>
   summarize (n = n())
+bechdel |>
+  mutate(
+    imdb_low = imdb_rating< 2.5,
+    imdb_mid1 = between(imdb_rating, 2.5, 5.0),
+    imdb_mid2 = between(imdb_rating, 5.1, 7.5),
+    imdb_high = imdb_rating> 7.5,
+  )
 bechdel$type <- as.factor(ifelse(bechdel$imdb_rating < 2.5, 'low',
                           ifelse(bechdel$imdb_rating < 5.0, 'mid1', 
                           ifelse(bechdel$imdb_rating < 7.5, 'mid2', 
@@ -63,13 +69,7 @@ bechdel |>
   filter(type != 'NA') |>
   ggplot(aes(x = type, fill = binary)) +
   geom_bar(position = "fill") +
-  scale_x_discrete(limits = c("low", "mid1", "mid2", "high")) +
-  labs(
-    x = "IMDB Rating Category",
-    y = "Proportion",
-    fill = "Bechdel Test Result",
-    title = "Proportion of Movies that passed Bechdel Test by IMDB Rating"
-  )
+  scale_x_discrete(limits = c("low", "mid1", "mid2", "high"))
   
 
   
@@ -77,18 +77,16 @@ bechdel |>
 
 Movies that fall withing the 2.5-5.0 ranking on IMDB are the most likely to Pass the bechdel test, while higher-ranked movies are less likely to pass than middle-ranked movies.
 
-
-
 ```{r}
 #| label: histogram-year-binary
 bechdel|>
+  ggplot(aes(x = year, fill = binary)) +
+  geom_bar()
+bechdel|>
+  filter(year == 1970)
+bechdel|>
   ggplot(aes(x = year)) +
-  geom_histogram(bins = 43) +
-  labs(
-    title = "Number of Movies by Year",
-    x = "Year",
-    y = "Count"
-  )
+  geom_histogram(bins = 43)
 
 ```
 
@@ -99,17 +97,10 @@ Are lower budget or higher budget movies more likely to pass?
 
 high_budget |>
   ggplot(aes(x = binary)) +
-  geom_bar() +
-  labs(
-    title = "Number of Movies that Passed/Failed the Bechdel Test",
-    x = "Bechdel Test Result",
-    y = "Count"
-  )
+  geom_bar() 
 
  
 ```
-
-
 
 ```{r}
 #|label: intgross
@@ -118,13 +109,7 @@ bechdel |>
   filter(!is.na(period_code)) |>
   ggplot(aes(x = as.factor(period_code), y = as.numeric(intgross), color = binary)) +
   geom_boxplot() +
-  ylim(0, 1.0e+09) +
-  labs(
-    title = "Movies by period, international gross income, and Bechdel test result",
-    y = "International Gross Income",
-    x = "Time Period (1 is newest, 5 is oldest)",
-    color = "Bechdel Test Result"
-  )
+  ylim(0, 1.5e+09)
 ```
 
 ```{r}
@@ -137,29 +122,20 @@ bechdel = bechdel |>
   mutate(oscar_won = if_else(grepl('Oscar', bechdel$awards), ifelse(grepl('Won', bechdel$awards), 'Y', 'N'),'N'))
 
 ```
+
 ```{r}
 #|label: oscar-wins
 
 bechdel |>
   ggplot(aes(x = oscar_won, fill = binary)) +
-  geom_bar(position = "fill") +
-  labs(
-    title = "Movies by Oscar and Bechdel Test Result",
-    y = "Proportion",
-    x = "Oscar Won/Lost",
-    fill = "Bechdel Test Result"
-  )
+  geom_bar(position = "fill")
 ```
-
-
-
 
 Summary Statistics ideas:
 
 Chi Squared Test:
 
-$\H_o:$ IMDB Rating and Passing the Bechdel test are independent of each other 
-$\H_a$ IMDB Rating and passing of the Bechdel test are not independent of each other
+$\H_o:$ IMDB Rating and Passing the Bechdel test are independent of each other $\H_a$ IMDB Rating and passing of the Bechdel test are not independent of each other
 
 ```{r}
 #|label: chi-squared
@@ -211,19 +187,24 @@ null_dist |>
     aes(x = stat)
   ) +
   geom_histogram() +
-  geom_vline(xintercept = 32064726) +
-  labs(
-    x = "Difference in Sample Means",
-    y = "Count",
-    title = "Null Distribution of Difference in Gross Incomes"
-  )
+  geom_vline(xintercept = 32064726)
 
 ```
 
 -   Assuming that the true mean international gross incomes for movies that fail the Bechdel test is equal to the the true mean international gross incomes for movies that pass the Bechdel test, the probability that we observe a sample mean of 32064726 or greater is about 0.001. Since our p-value is less than 0.05 (0.001 \< 0.05) we reject the null hypothesis and conclude the alternative hypothesis that movies that fail the Bechdel test have a greater international gross income.
 
-
 ```{r}
 chisq.test(bechdel$oscar_won, bechdel$binary)
 ```
 
+## Results
+
+Overall, we conclude that movies that fail the Bechdel Test are more successful in terms of income and ratings. However, for awards, we are unable to conclude that movies that fail the Bechdel Test are less likely to receive an award.
+
+For income, we used a box plot and a difference in means distribution to find our results. From the box-plot we found that the true mean income was greater across all time periods. From our null distribution, we found a p-value equal to .001 showing that the difference in the true mean incomes in movies that fail the Bechdel test and movies that pass the Bechdel test is greater than 0. Overall, this shows that more profit is made, and therefore more tickets are bought, when limiting gender roles are present in movies.
+
+For ratings, we performed a chi-squared test and displayed a bar chart of imdb ratings.
+
+Finally for awards, we calculated a p-value of 0.8659. As a result, we fail to reject the null hypothesis that more Grammy's are won when movies fail the Bechdel Test.
+
+Despite the lack of evidence in awards, we found that the overall success in movies increases when such movies fail the Bechdel Test. As awards and ratings are chosen by a small committee with certain guidelines in place, it makes sense for them not to show a significant difference regarding the Bechdel Test as many biases and politics are at play.
