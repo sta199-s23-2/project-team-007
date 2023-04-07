@@ -23,7 +23,7 @@ library(tidyverse)
 #| label: load-data-wealth-and-income
 
 bechdel<- read.csv(file = 'data/bechdel_test.csv')
-bechdel
+
 ```
 
 ```{r}
