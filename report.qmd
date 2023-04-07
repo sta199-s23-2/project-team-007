@@ -97,7 +97,7 @@ Are lower budget or higher budget movies more likely to pass?
 ```{r}
 #| label: bar-median-budget
 
-high_budget |>
+bechdel |>
   ggplot(aes(x = binary)) +
   geom_bar() +
   labs(
@@ -288,7 +288,7 @@ chisq.test(bechdel$oscar_won, bechdel$binary)
 After running our Chi-Squared we found the p value to be 0.8659. Because our p-value of 0.8659 is greater than our alpha value of 0.05, we fail to reject the null hypothesis and can not conclude that passing the Bechdel test and winning an Oscar have a correlation.
  
  
- ## Results
+## Results
 
 Overall, we conclude that movies that fail the Bechdel Test are more successful in terms of income and ratings. However, for awards, we are unable to conclude that movies that fail the Bechdel Test are less likely to receive an award.
 
