@@ -195,7 +195,6 @@ Summary Statistics ideas:
 
 Chi Squared Test:
 
-<<<<<<< HEAD
 $\H_o:$ IMDB Rating and Passing the Bechdel test are independent of each other
 $\H_a$ IMDB Rating and passing of the Bechdel test are not independent of each other
 
@@ -207,6 +206,3 @@ chisq.test(bechdel$type, bechdel$binary)
 
 After running our Chi-Squared we found the p value to be 7.237e-06. Because our p-value of 7.237e-06 is less than our alpha value of 0.05, we reject the null hypothesis and conclude that passing the Bechdel test and IMDB score have some correlation.
 
-=======
-$\H_o:$
->>>>>>> 30ac5fad786ec5366ec15ba1d2d9e95a2e694b00
