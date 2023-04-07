@@ -39,6 +39,7 @@ To further explore female representation and characterization in the film indust
 #| label: load-packages
 #| message: false
 library(tidyverse)
+library(tidymodels)
 ```
 
 ```{r}
@@ -195,8 +196,7 @@ Summary Statistics ideas:
 
 Chi Squared Test:
 
-$\H_o:$ IMDB Rating and Passing the Bechdel test are independent of each other
-$\H_a$ IMDB Rating and passing of the Bechdel test are not independent of each other
+$\H_o:$ IMDB Rating and Passing the Bechdel test are independent of each other $\H_a$ IMDB Rating and passing of the Bechdel test are not independent of each other
 
 ```{r}
 #|label: chi-squared
@@ -206,3 +206,48 @@ chisq.test(bechdel$type, bechdel$binary)
 
 After running our Chi-Squared we found the p value to be 7.237e-06. Because our p-value of 7.237e-06 is less than our alpha value of 0.05, we reject the null hypothesis and conclude that passing the Bechdel test and IMDB score have some correlation.
 
+```{r}
+#|label: diff-in-incomes
+
+bechdel |>
+  filter(intgross != "#N/A") |>
+  group_by(binary) |>
+  summarise(mean_income = mean(as.numeric(intgross)))
+
+```
+
+$\bar{x_f} - \bar{x_p}$ = 32064726
+
+$H_o: \mu_f - \mu_p$ = 0
+
+$H_a: \mu_f - \mu_p >$ 0
+
+```{r}
+#|label: permute-test
+
+bechdel <- bechdel |>
+  mutate (
+    intgross = as.numeric(intgross)
+  )
+
+null_dist <- bechdel |>
+  specify(response = intgross, explanatory = binary) |>
+  hypothesize(null = "independence") |>
+  generate(reps = 1000, type = "permute") |>
+  calculate(stat = "diff in means", order = c("FAIL", "PASS"))
+```
+
+```{r}
+#|label: p-val
+
+null_dist |>
+  get_p_value(obs_stat = 32064726, direction = "greater")
+
+null_dist |>
+  ggplot(
+    aes(x = stat)
+  ) +
+  geom_histogram() +
+  geom_vline(xintercept = 32064726)
+
+```
