@@ -15,6 +15,8 @@ Research Question: Does a movie's passage of the Bechdel test influence its succ
 
 This question is important as it relates to the level of female representation in the film industry, and the value that the film industry places on female actors, characters, and storylines in film.
 
+Across a general trend, we hypothesize movies that fail the Bechdel test will have higher success, stemming from higher ratings, gross income and awards.
+
 Data Information:
 
 This data is from fivethirtyeight.come, and was originally collected from IMBD movie data in 2017.
