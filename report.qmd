@@ -109,7 +109,8 @@ g
 bechdel|>
   ggplot(aes(x = year, y = budget, color = binary )) +
   geom_point()
-  ggplot(aes(x = year, y = budget))+
+bechdel|>
+  ggplot(aes(x = year, y = budget)) +
   geom_point() +
   facet_wrap(~binary) +
   geom_smooth(method = lm, se = FALSE)
