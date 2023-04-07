@@ -128,9 +128,7 @@ bechdel|>
 
 ```
 
-Visualizations Ideas:
-
-are lower budget or higher budget movies more likely to pass?
+Are lower budget or higher budget movies more likely to pass?
 
 ```{r}
 #| label: bar-median-budget
