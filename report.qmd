@@ -213,7 +213,7 @@ null_dist |>
   geom_histogram() +
   geom_vline(xintercept = 32064726) +
   labs(
-    x = "Difference in Sample Means",
+    x = "Difference in Sample Income Means",
     y = "Count",
     title = "Null Distribution of Difference in Gross Incomes"
   )
@@ -221,6 +221,59 @@ null_dist |>
 ```
 
 -   Assuming that the true mean international gross incomes for movies that fail the Bechdel test is equal to the the true mean international gross incomes for movies that pass the Bechdel test, the probability that we observe a sample mean of 32064726 or greater is about 0.001. Since our p-value is less than 0.05 (0.001 \< 0.05) we reject the null hypothesis and conclude the alternative hypothesis that movies that fail the Bechdel test have a greater international gross income.
+
+```{r}
+#|label: diff-in-ratings
+
+bechdel |>
+  filter(imdb_rating != "#N/A") |>
+  group_by(binary) |>
+  summarise(mean_rating = mean(as.numeric(imdb_rating)))
+
+```
+
+$\bar{x_f} - \bar{x_p}$ = 0.284488
+
+$H_o: \mu_f - \mu_p$ = 0
+
+$H_a: \mu_f - \mu_p >$ 0
+
+```{r}
+#|label: permute-test
+
+bechdel <- bechdel |>
+  mutate (
+    imdb_rating = as.numeric(imdb_rating)
+  )
+
+null_dist2 <- bechdel |>
+  specify(response = imdb_rating, explanatory = binary) |>
+  hypothesize(null = "independence") |>
+  generate(reps = 1000, type = "permute") |>
+  calculate(stat = "diff in means", order = c("FAIL", "PASS"))
+```
+
+```{r}
+#|label: p-val
+
+null_dist2 |>
+  get_p_value(obs_stat = 0.284488, direction = "greater")
+
+null_dist2 |>
+  ggplot(
+    aes(x = stat)
+  ) +
+  geom_histogram() +
+  geom_vline(xintercept = 0.284488) +
+  labs(
+    x = "Difference in Sample Rating Means",
+    y = "Count",
+    title = "Null Distribution of Difference in IMDB Ratings"
+  )
+
+```
+
+-   Assuming that the true mean IMDB rating for movies that fail the Bechdel test is equal to the the true mean IMDB rating for movies that pass the Bechdel test, the probability that we observe a sample mean of 0.284488 or greater is less than 0.001. Since our p-value is less than 0.05 we reject the null hypothesis and conclude the alternative hypothesis that movies that fail the Bechdel test have a greater true mean IMDB rating
 
  
 ```{r}
