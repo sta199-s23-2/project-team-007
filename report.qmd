@@ -227,3 +227,14 @@ null_dist |>
 chisq.test(bechdel$oscar_won, bechdel$binary)
 ```
  
+ ## Results
+
+Overall, we conclude that movies that fail the Bechdel Test are more successful in terms of income and ratings. However, for awards, we are unable to conclude that movies that fail the Bechdel Test are less likely to receive an award.
+
+For income, we used a box plot and a difference in means distribution to find our results. From the box-plot we found that the true mean income was greater across all time periods. From our null distribution, we found a p-value equal to .001 showing that the difference in the true mean incomes in movies that fail the Bechdel test and movies that pass the Bechdel test is greater than 0. Overall, this shows that more profit is made, and therefore more tickets are bought, when limiting gender roles are present in movies.
+
+For ratings, we performed a chi-squared test and displayed a bar chart of imdb ratings.
+
+Finally for awards, we calculated a p-value of 0.8659. As a result, we fail to reject the null hypothesis that more Grammy's are won when movies fail the Bechdel Test.
+
+Despite the lack of evidence in awards, we found that the overall success in movies increases when such movies fail the Bechdel Test. As awards and ratings are chosen by a small committee with certain guidelines in place, it makes sense for them not to show a significant difference regarding the Bechdel Test as many biases and politics are at play.
