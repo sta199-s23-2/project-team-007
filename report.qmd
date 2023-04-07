@@ -11,6 +11,23 @@ execute:
 
 Research Question: Does a movie's passage of the Bechdel test influence its success?
 
+This question is important as it relates to the level of female representation in the film industry, and the value that the film industry places on female actors, characters, and storylines in film.
+
+
+Data Information:
+
+This data is from fivethirtyeight.come, and was originally collected from IMBD movie data in 2017.
+
+The observations in this datasets are various movies, and the variables include: year (year movie was released), imdb (imdb code for movie), title (title of movie), test (whether it passes each criterion of the Bechdel test- contains two named female characters, do these two women speak to each other, do they speak to each other about something other than a man), binary (whether the movie passes the Bechdel test) budget (movie budget), domgross (the domestic gross product of the movie, intgross (the international gross product of the movie), and the budget/GDP of the movies converted to 2013 dollars.
+
+Literature:
+
+Our research question sparked from a fivethirtyeight.com article that described how ⅓ of the top 50 movies from 2016 failed the Bechdel Test. The Bechdel Test is a simple test that assesses movies based on three criteria: does a movie have at least two named female characters? Do these named characters have at least one conversation? Is this conversation about something that is not about a man? We were surprised by the number of movies that did not pass this seemingly basic test, even in 2016. This article further explored diversity in the film industry, testing movies on whether the on-set crew were 50% women (of which none of these top 50 movies passed), and explored the racial diversity in the film industry. 
+
+To further explore female representation and characterization in the film industry, we want to investigate the relationship between film budget and profit in regard to whether films pass the Bechdel test. 
+
+(article: https://projects.fivethirtyeight.com/next-bechdel/)
+
 ## Methodology
 
 ```{r}
