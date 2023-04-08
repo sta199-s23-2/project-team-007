@@ -75,7 +75,7 @@ bechdel |>
   
 ```
 
-Movies that fall withing the 2.5-5.0 ranking on IMDB are the most likely to Pass the bechdel test, while higher-ranked movies are less likely to pass than middle-ranked movies.
+This graph shows the proportion of movies to pass the Bechdel test at different IMDB scores. IMDB scores are out of 10 so each bar represents 2.5 out of the total 10 points with the first being a score of 0-2.5. Movies that fall withing the 2.5-5.0 ranking on IMDB are the most likely to Pass the bechdel test, while higher-ranked movies are less likely to pass than middle-ranked movies. We decided to use this to show how the Bechdel test might compare to critic ratings to see if there is a correlation.
 
 
 
@@ -91,8 +91,7 @@ bechdel|>
   )
 
 ```
-
-Are lower budget or higher budget movies more likely to pass?
+This graph shows the amount of movies produced each year in our data set. As seen above, there is a much larger amount of movies produced in more recent years. This may lead to some years have a greater amount of movies that pass the Bechdel test than others. While we do not directly use this to draw conclusions, it is useful in giving an overview of the data we are using.
 
 ```{r}
 #| label: bar-median-budget
@@ -108,7 +107,7 @@ bechdel |>
 
  
 ```
-
+This graph, like the one above, gives more overview data about the dataset we are using. This graph shows how many movies out of the dataset as a whole pass the Bechdel test. As you can see, while a majority of movies do not pass the Bechdel test, it is not significantly skewed.
 
 
 ```{r}
@@ -127,12 +126,10 @@ bechdel |>
   )
 ```
 
+This graph shows how international gross income compares to the time period of release and the result of the Bechdel test. As you can see from the graph, in most time periods movies that fail the Bechdel test do better to make money. While this does not include budget for movies, it gives good insight into how gross income relates to the Bechdel test.
+
 ```{r}
 #|label: rearrange-data
-bechdel|>
-  filter(grepl('Oscar', awards)) |>
-  filter(grepl('Won', awards))
-
 bechdel = bechdel |>
   mutate(oscar_won = if_else(grepl('Oscar', bechdel$awards), ifelse(grepl('Won', bechdel$awards), 'Y', 'N'),'N'))
 
@@ -150,16 +147,19 @@ bechdel |>
     fill = "Bechdel Test Result"
   )
 ```
+This graph shows how winning an Oscar reflects on the Bechdel test. Winning an Oscar is one of the most prestegious awards for a film so usually only the best films of the years are considered. Looking at the data, we can see that winning an Oscar does not seem to have much affect on passing the Bechdel test. Because an Oscar is a measure of success, this graph gives great information for us to answer our research question.
+
+**Summary Statistics**
+
+We decided to use both the Chi-Squared Test for Independence and the Test for difference of means. The Chi-Squared Test for Independence helps determine if the two variables are likely to be related. As we are measuring whether the Bechdel test affects success, knowing if the two variables are likely to be related can be a good first step. We are also using the difference in means test, also known as the t-test, to see if both ratings and income are influenced by the Bechdel test. Since both of these are numeric values, a difference in means is very helpful in determining if there is a meaningful difference when taking into account the Bechdel test.
 
 
+Chi Squared Test for Independence for IMDB:
 
+While the IMDB score is a numerical value, we divided it into categorys. Because we are dividing it into categories, we are able to use the Chi-Squared Test for Independence. We chose to alter the data because in our first graph we altered the data in the same way and this may help us draw better conclusions.
 
-Summary Statistics ideas:
-
-Chi Squared Test:
-
-$\H_o:$ IMDB Rating and Passing the Bechdel test are independent of each other 
-$\H_a$ IMDB Rating and passing of the Bechdel test are not independent of each other
+$\H_o:$ IMDB Rating and passing the Bechdel test are independent of each other.
+$\H_a$ IMDB Rating and passing the Bechdel test are not independent of each other.
 
 ```{r}
 #|label: chi-squared
@@ -167,60 +167,9 @@ $\H_a$ IMDB Rating and passing of the Bechdel test are not independent of each o
 chisq.test(bechdel$type, bechdel$binary)
 ```
 
-After running our Chi-Squared we found the p value to be 7.237e-06. Because our p-value of 7.237e-06 is less than our alpha value of 0.05, we reject the null hypothesis and conclude that passing the Bechdel test and IMDB score have some correlation.
+After running our Chi-Squared we found the p value to be 7.237e-06. Because our p-value of 7.237e-06 is less than our alpha value of 0.05, we reject the null hypothesis and conclude that passing the Bechdel test and IMDB score are not independent observations.
 
-```{r}
-#|label: diff-in-incomes
-
-bechdel |>
-  filter(intgross != "#N/A") |>
-  group_by(binary) |>
-  summarise(mean_income = mean(as.numeric(intgross)))
-
-```
-
-$\bar{x_f} - \bar{x_p}$ = 32064726
-
-$H_o: \mu_f - \mu_p$ = 0
-
-$H_a: \mu_f - \mu_p >$ 0
-
-```{r}
-#|label: permute-test
-
-bechdel <- bechdel |>
-  mutate (
-    intgross = as.numeric(intgross)
-  )
-
-null_dist <- bechdel |>
-  specify(response = intgross, explanatory = binary) |>
-  hypothesize(null = "independence") |>
-  generate(reps = 1000, type = "permute") |>
-  calculate(stat = "diff in means", order = c("FAIL", "PASS"))
-```
-
-```{r}
-#|label: p-val
-
-null_dist |>
-  get_p_value(obs_stat = 32064726, direction = "greater")
-
-null_dist |>
-  ggplot(
-    aes(x = stat)
-  ) +
-  geom_histogram() +
-  geom_vline(xintercept = 32064726) +
-  labs(
-    x = "Difference in Sample Income Means",
-    y = "Count",
-    title = "Null Distribution of Difference in Gross Incomes"
-  )
-
-```
-
--   Assuming that the true mean international gross incomes for movies that fail the Bechdel test is equal to the the true mean international gross incomes for movies that pass the Bechdel test, the probability that we observe a sample mean of 32064726 or greater is about 0.001. Since our p-value is less than 0.05 (0.001 \< 0.05) we reject the null hypothesis and conclude the alternative hypothesis that movies that fail the Bechdel test have a greater international gross income.
+Difference in Means for IMDB ratings:
 
 ```{r}
 #|label: diff-in-ratings
@@ -275,6 +224,64 @@ null_dist2 |>
 
 -   Assuming that the true mean IMDB rating for movies that fail the Bechdel test is equal to the the true mean IMDB rating for movies that pass the Bechdel test, the probability that we observe a sample mean of 0.284488 or greater is less than 0.001. Since our p-value is less than 0.05 we reject the null hypothesis and conclude the alternative hypothesis that movies that fail the Bechdel test have a greater true mean IMDB rating
 
+
+Difference in Means test for income generated:
+
+```{r}
+#|label: diff-in-incomes
+
+bechdel |>
+  filter(intgross != "#N/A") |>
+  group_by(binary) |>
+  summarise(mean_income = mean(as.numeric(intgross)))
+
+```
+
+$\bar{x_f} - \bar{x_p}$ = 32064726
+
+$H_o: \mu_f - \mu_p$ = 0
+
+$H_a: \mu_f - \mu_p >$ 0
+
+```{r}
+#|label: permute-test
+
+bechdel <- bechdel |>
+  mutate (
+    intgross = as.numeric(intgross)
+  )
+
+null_dist <- bechdel |>
+  specify(response = intgross, explanatory = binary) |>
+  hypothesize(null = "independence") |>
+  generate(reps = 1000, type = "permute") |>
+  calculate(stat = "diff in means", order = c("FAIL", "PASS"))
+```
+
+```{r}
+#|label: p-val
+
+null_dist |>
+  get_p_value(obs_stat = 32064726, direction = "greater")
+
+null_dist |>
+  ggplot(
+    aes(x = stat)
+  ) +
+  geom_histogram() +
+  geom_vline(xintercept = 32064726) +
+  labs(
+    x = "Difference in Sample Income Means",
+    y = "Count",
+    title = "Null Distribution of Difference in Gross Incomes"
+  )
+
+```
+
+-   Assuming that the true mean international gross incomes for movies that fail the Bechdel test is equal to the the true mean international gross incomes for movies that pass the Bechdel test, the probability that we observe a sample mean of 32064726 or greater is about 0.001. Since our p-value is less than 0.05 (0.001 \< 0.05) we reject the null hypothesis and conclude the alternative hypothesis that movies that fail the Bechdel test have a greater international gross income.
+
+
+Chi-Squared Test for Independence for Oscar winners:
 
 $\H_o:$ Winning an Oscar and passing the Bechdel test are independent of each other. 
 $\H_a$ Winning an Oscar and passing the Bechdel test are not independent of each other.
