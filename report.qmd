@@ -51,7 +51,7 @@ bechdel<- read.csv(file = 'data/bechdel_test.csv')
 
 
 ```{r}
-#|label: IMDB
+#| label: IMDB
 bechdel_rating <- bechdel |> 
   group_by(rated) |>
   summarize (n = n())
@@ -111,7 +111,7 @@ This graph, like the one above, gives more overview data about the dataset we ar
 
 
 ```{r}
-#|label: intgross
+#| label: intgross
 
 bechdel |>
   filter(!is.na(period_code)) |>
@@ -129,13 +129,13 @@ bechdel |>
 This graph shows how international gross income compares to the time period of release and the result of the Bechdel test. As you can see from the graph, in most time periods movies that fail the Bechdel test do better to make money. While this does not include budget for movies, it gives good insight into how gross income relates to the Bechdel test.
 
 ```{r}
-#|label: rearrange-data
+#| label: rearrange-data
 bechdel = bechdel |>
   mutate(oscar_won = if_else(grepl('Oscar', bechdel$awards), ifelse(grepl('Won', bechdel$awards), 'Y', 'N'),'N'))
 
 ```
 ```{r}
-#|label: oscar-wins
+#| label: oscar-wins
 
 bechdel |>
   ggplot(aes(x = oscar_won, fill = binary)) +
@@ -162,7 +162,7 @@ $\H_o:$ IMDB Rating and passing the Bechdel test are independent of each other.
 $\H_a$ IMDB Rating and passing the Bechdel test are not independent of each other.
 
 ```{r}
-#|label: chi-squared
+#| label: chi-squared
 
 chisq.test(bechdel$type, bechdel$binary)
 ```
@@ -172,7 +172,7 @@ After running our Chi-Squared we found the p value to be 7.237e-06. Because our 
 Difference in Means for IMDB ratings:
 
 ```{r}
-#|label: diff-in-ratings
+#| label: diff-in-ratings
 
 bechdel |>
   filter(imdb_rating != "#N/A") |>
@@ -188,7 +188,7 @@ $H_o: \mu_f - \mu_p$ = 0
 $H_a: \mu_f - \mu_p >$ 0
 
 ```{r}
-#|label: permute-test
+#| label: permute-test
 
 bechdel <- bechdel |>
   mutate (
@@ -203,7 +203,7 @@ null_dist2 <- bechdel |>
 ```
 
 ```{r}
-#|label: p-val
+#| label: p-val
 
 null_dist2 |>
   get_p_value(obs_stat = 0.284488, direction = "greater")
@@ -228,7 +228,7 @@ null_dist2 |>
 Difference in Means test for income generated:
 
 ```{r}
-#|label: diff-in-incomes
+#| label: diff-in-incomes
 
 bechdel |>
   filter(intgross != "#N/A") |>
@@ -244,7 +244,7 @@ $H_o: \mu_f - \mu_p$ = 0
 $H_a: \mu_f - \mu_p >$ 0
 
 ```{r}
-#|label: permute-test
+#| label: permute-test
 
 bechdel <- bechdel |>
   mutate (
@@ -259,7 +259,7 @@ null_dist <- bechdel |>
 ```
 
 ```{r}
-#|label: p-val
+#| label: p-val
 
 null_dist |>
   get_p_value(obs_stat = 32064726, direction = "greater")
