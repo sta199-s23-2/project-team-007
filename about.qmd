@@ -9,4 +9,4 @@ This project was developed by **Team 007** For [STA 199: Introduction to Data Sc
 -   Team member 1: Nick Bayer is a Sophomore studying Computer Science with Minors in Statistical Science and History.
 -   Team member 2: Madison Nguyen is a Freshman studying Computer Science.
 -   Team member 3: Jacqueline Rodriguez is a Freshman studying Public Policy and Statistics.
--   Team member 4: One sentence description of Team member 4 (e.g., year, major, etc.).
+-   Team member 4: Ella Evans is a Freshman majoring in Economics and English, possibly with a minor in Statistics.
