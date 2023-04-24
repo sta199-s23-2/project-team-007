@@ -23,13 +23,13 @@ Research Question: Does a movie's passage of the Bechdel test influence its succ
 
 This question is important as it relates to the level of female representation in the film industry, and the value that the film industry places on female actors, characters, and storylines in film.
 
-Across a general trend, we hypothesize movies that fail the Bechdel test will have higher success. We deem success to mean higher ratings, larger gross income and more awards earned. Although there has been progress in creating larger roles for women in film, society still values certain gender stereotypes in films and some of these still do very well in the box office.
+Across a general trend, we hypothesize movies that fail the Bechdel test will have higher success, stemming from higher ratings, gross income and awards. Although there has been progress in creating larger roles for women in film, society still values certain gender stereotypes in films and some of these still do very well in the box office.
 
 For ethical concerns, the Bechdel test has been shown to be flawed in that it sets a bare minimum rather than a adequate standard. For example, it sets no time standard for women to appear on the screen or address intersectionality by including race, sexuality, disability, or class. Therefore, if a movie or group of movies pass a test, it may seem like it has a good portrayal of women when in reality it still feeds into gender roles and lack of representation of women.
 
 Data Information:
 
-This data is from fivethirtyeight.come, and was originally collected from IMBD movie data in 2017.
+This data is from fivethirtyeight.com, and was originally collected from IMBD movie data. The data we worked with is from the FiveThirtyEight story titled "The Dollar-And-Cents Case Against Hollywood's Exclusion of Women". After reading this article, we wanted to further explore how a movie's passage of the Bechdel test influences its financial and critic-based success. We chose this set as it contained over 1700 observations of films released from 1970-2013, as well as information on movie budgets, gross/international movie products, awards, movie genre, movie rating, and IMBD ratings.
 
 The observations in this datasets are various movies, and the variables include: year (year movie was released), imdb (imdb code for movie), title (title of movie), test (whether it passes each criterion of the Bechdel test- contains two named female characters, do these two women speak to each other, do they speak to each other about something other than a man), binary (whether the movie passes the Bechdel test) budget (movie budget), domgross (the domestic gross product of the movie, intgross (the international gross product of the movie), and the budget/GDP of the movies converted to 2013 dollars.
 
@@ -57,8 +57,11 @@ bechdel<- read.csv(file = 'data/bechdel_test.csv')
 
 ```
 
+
 ```{r, echo=FALSE}
 #| label: IMDB
+
+
 bechdel_rating <- bechdel |> 
   group_by(rated) |>
   summarize (n = n())
@@ -81,6 +84,7 @@ bechdel |>
 
   
 ```
+
 
 This graph shows the proportion of movies to pass the Bechdel test at different IMDB scores. IMDB scores are out of 10 so each bar represents 2.5 out of the total 10 points with the first being a score of 0-2.5. Movies that fall withing the 2.5-5.0 ranking on IMDB are the most likely to Pass the Bechdel test, while higher-ranked movies are less likely to pass than middle-ranked movies. We decided to use this to show how the Bechdel test might compare to critic ratings to see if there is a correlation.
 
@@ -116,6 +120,7 @@ bechdel |>
 
 This graph, like the one above, gives more overview data about the dataset we are using. This graph shows how many movies out of the dataset as a whole pass the Bechdel test. As you can see, while a majority of movies do not pass the Bechdel test, it is not significantly skewed.
 
+
 ```{r, echo=FALSE}
 #| label: intgross
 
@@ -134,12 +139,15 @@ bechdel |>
 
 This graph shows how international gross income compares to the time period of release and the result of the Bechdel test. As you can see from the graph, in most time periods movies that fail the Bechdel test do better to make money. While this does not include budget for movies, it gives good insight into how gross income relates to the Bechdel test.
 
+
 ```{r, echo=FALSE}
 #| label: rearrange-data
+
 bechdel = bechdel |>
   mutate(oscar_won = if_else(grepl('Oscar', bechdel$awards), ifelse(grepl('Won', bechdel$awards), 'Y', 'N'),'N'))
 
 ```
+
 
 ```{r, echo=FALSE}
 #| label: oscar-wins
@@ -167,6 +175,7 @@ While the IMDB score is a numerical value, we divided it into categorys. Because
 
 $\H_o:$ IMDB Rating and passing the Bechdel test are independent of each other. $\H_a$ IMDB Rating and passing the Bechdel test are not independent of each other.
 
+
 ```{r, echo=FALSE}
 #| label: chi-squared
 
@@ -176,6 +185,7 @@ chisq.test(bechdel$type, bechdel$binary, simulate.p.value = TRUE)
 After running our Chi-Squared we found the p value to be 7.237e-06. Because our p-value of 7.237e-06 is less than our alpha value of 0.05, we reject the null hypothesis and conclude that passing the Bechdel test and IMDB score are not independent observations.
 
 Difference in Means for IMDB ratings:
+
 
 ```{r, echo=FALSE}
 #| label: diff-in-ratings
@@ -192,6 +202,7 @@ $\bar{x_f} - \bar{x_p}$ = 0.284488
 $H_o: \mu_f - \mu_p$ = 0
 
 $H_a: \mu_f - \mu_p >$ 0
+
 
 ```{r, echo=FALSE}
 #| label: permute-test
@@ -232,6 +243,7 @@ null_dist2 |>
 
 Difference in Means test for income generated:
 
+
 ```{r, echo=FALSE}
 #| label: diff-in-incomes
 
@@ -248,6 +260,7 @@ $H_o: \mu_f - \mu_p$ = 0
 
 $H_a: \mu_f - \mu_p >$ 0
 
+
 ```{r, echo=FALSE}
 #| label: permute-test
 
@@ -262,6 +275,7 @@ null_dist <- bechdel |>
   generate(reps = 1000, type = "permute") |>
   calculate(stat = "diff in means", order = c("FAIL", "PASS"))
 ```
+
 
 ```{r, echo=FALSE}
 #| label: p-val

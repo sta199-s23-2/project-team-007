@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -138,19 +138,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">TEAM NAME</a>
+    <a class="nav-link" href="./index.html">
+ <span class="menu-text">TEAM NAME</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./proposal.html">Proposal</a>
+    <a class="nav-link" href="./proposal.html">
+ <span class="menu-text">Proposal</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./presentation.pdf">Presentation</a>
+    <a class="nav-link" href="./presentation.pdf">
+ <span class="menu-text">Presentation</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./report.html" aria-current="page">Report</a>
+    <a class="nav-link active" href="./report.html" aria-current="page">
+ <span class="menu-text">Report</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html">About</a>
+    <a class="nav-link" href="./about.html">
+ <span class="menu-text">About</span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -187,6 +192,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -201,7 +207,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Across a general trend, we hypothesize movies that fail the Bechdel test will have higher success, stemming from higher ratings, gross income and awards. Although there has been progress in creating larger roles for women in film, society still values certain gender stereotypes in films and some of these still do very well in the box office.</p>
 <p>For ethical concerns, the Bechdel test has been shown to be flawed in that it sets a bare minimum rather than a adequate standard. For example, it sets no time standard for women to appear on the screen or address intersectionality by including race, sexuality, disability, or class. Therefore, if a movie or group of movies pass a test, it may seem like it has a good portrayal of women when in reality it still feeds into gender roles and lack of representation of women.</p>
 <p>Data Information:</p>
-<p>This data is from fivethirtyeight.come, and was originally collected from IMBD movie data in 2017.</p>
+<p>This data is from fivethirtyeight.com, and was originally collected from IMBD movie data. The data we worked with is from the FiveThirtyEight story titled “The Dollar-And-Cents Case Against Hollywood’s Exclusion of Women”. After reading this article, we wanted to further explore how a movie’s passage of the Bechdel test influences its financial and critic-based success. We chose this set as it contained over 1700 observations of films released from 1970-2013, as well as information on movie budgets, gross/international movie products, awards, movie genre, movie rating, and IMBD ratings.</p>
 <p>The observations in this datasets are various movies, and the variables include: year (year movie was released), imdb (imdb code for movie), title (title of movie), test (whether it passes each criterion of the Bechdel test- contains two named female characters, do these two women speak to each other, do they speak to each other about something other than a man), binary (whether the movie passes the Bechdel test) budget (movie budget), domgross (the domestic gross product of the movie, intgross (the international gross product of the movie), and the budget/GDP of the movies converted to 2013 dollars.</p>
 <p>Literature:</p>
 <p>Our research question sparked from a fivethirtyeight.com article that described how ⅓ of the top 50 movies from 2016 failed the Bechdel Test. The Bechdel Test is a simple test that assesses movies based on three criteria: does a movie have at least two named female characters? Do these named characters have at least one conversation? Is this conversation about something that is not about a man? We were surprised by the number of movies that did not pass this seemingly basic test, even in 2016. This article further explored diversity in the film industry, testing movies on whether the on-set crew were 50% women (of which none of these top 50 movies passed), and explored the racial diversity in the film industry.</p>
@@ -554,7 +560,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -590,24 +613,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
