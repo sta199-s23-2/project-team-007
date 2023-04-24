@@ -15,13 +15,13 @@ Research Question: Does a movie's passage of the Bechdel test influence its succ
 
 This question is important as it relates to the level of female representation in the film industry, and the value that the film industry places on female actors, characters, and storylines in film.
 
-Across a general trend, we hypothesize movies that fail the Bechdel test will have higher success. We deem success to mean higher ratings, larger gross income and more awards earned. Although there has been progress in creating larger roles for women in film, society still values certain gender stereotypes in films and some of these still do very well in the box office.
+Across a general trend, we hypothesize movies that fail the Bechdel test will have higher success, stemming from higher ratings, gross income and awards. Although there has been progress in creating larger roles for women in film, society still values certain gender stereotypes in films and some of these still do very well in the box office.
 
 For ethical concerns, the Bechdel test has been shown to be flawed in that it sets a bare minimum rather than a adequate standard. For example, it sets no time standard for women to appear on the screen or address intersectionality by including race, sexuality, disability, or class. Therefore, if a movie or group of movies pass a test, it may seem like it has a good portrayal of women when in reality it still feeds into gender roles and lack of representation of women.
 
 Data Information:
 
-This data is from fivethirtyeight.come, and was originally collected from IMBD movie data in 2017.
+This data is from fivethirtyeight.com, and was originally collected from IMBD movie data. The data we worked with is from the FiveThirtyEight story titled "The Dollar-And-Cents Case Against Hollywood's Exclusion of Women". After reading this article, we wanted to further explore how a movie's passage of the Bechdel test influences its financial and critic-based success. We chose this set as it contained over 1700 observations of films released from 1970-2013, as well as information on movie budgets, gross/international movie products, awards, movie genre, movie rating, and IMBD ratings.
 
 The observations in this datasets are various movies, and the variables include: year (year movie was released), imdb (imdb code for movie), title (title of movie), test (whether it passes each criterion of the Bechdel test- contains two named female characters, do these two women speak to each other, do they speak to each other about something other than a man), binary (whether the movie passes the Bechdel test) budget (movie budget), domgross (the domestic gross product of the movie, intgross (the international gross product of the movie), and the budget/GDP of the movies converted to 2013 dollars.
 
@@ -49,9 +49,8 @@ bechdel<- read.csv(file = 'data/bechdel_test.csv')
 
 ```
 
-
 ```{r}
-#| label: IMDB
+#|label: IMDB
 bechdel_rating <- bechdel |> 
   group_by(rated) |>
   summarize (n = n())
@@ -77,8 +76,6 @@ bechdel |>
 
 This graph shows the proportion of movies to pass the Bechdel test at different IMDB scores. IMDB scores are out of 10 so each bar represents 2.5 out of the total 10 points with the first being a score of 0-2.5. Movies that fall withing the 2.5-5.0 ranking on IMDB are the most likely to Pass the bechdel test, while higher-ranked movies are less likely to pass than middle-ranked movies. We decided to use this to show how the Bechdel test might compare to critic ratings to see if there is a correlation.
 
-
-
 ```{r}
 #| label: histogram-year-binary
 bechdel|>
@@ -91,6 +88,7 @@ bechdel|>
   )
 
 ```
+
 This graph shows the amount of movies produced each year in our data set. As seen above, there is a much larger amount of movies produced in more recent years. This may lead to some years have a greater amount of movies that pass the Bechdel test than others. While we do not directly use this to draw conclusions, it is useful in giving an overview of the data we are using.
 
 ```{r}
@@ -107,11 +105,11 @@ bechdel |>
 
  
 ```
+
 This graph, like the one above, gives more overview data about the dataset we are using. This graph shows how many movies out of the dataset as a whole pass the Bechdel test. As you can see, while a majority of movies do not pass the Bechdel test, it is not significantly skewed.
 
-
 ```{r}
-#| label: intgross
+#|label: intgross
 
 bechdel |>
   filter(!is.na(period_code)) |>
@@ -129,13 +127,14 @@ bechdel |>
 This graph shows how international gross income compares to the time period of release and the result of the Bechdel test. As you can see from the graph, in most time periods movies that fail the Bechdel test do better to make money. While this does not include budget for movies, it gives good insight into how gross income relates to the Bechdel test.
 
 ```{r}
-#| label: rearrange-data
+#|label: rearrange-data
 bechdel = bechdel |>
   mutate(oscar_won = if_else(grepl('Oscar', bechdel$awards), ifelse(grepl('Won', bechdel$awards), 'Y', 'N'),'N'))
 
 ```
+
 ```{r}
-#| label: oscar-wins
+#|label: oscar-wins
 
 bechdel |>
   ggplot(aes(x = oscar_won, fill = binary)) +
@@ -147,22 +146,21 @@ bechdel |>
     fill = "Bechdel Test Result"
   )
 ```
+
 This graph shows how winning an Oscar reflects on the Bechdel test. Winning an Oscar is one of the most prestegious awards for a film so usually only the best films of the years are considered. Looking at the data, we can see that winning an Oscar does not seem to have much affect on passing the Bechdel test. Because an Oscar is a measure of success, this graph gives great information for us to answer our research question.
 
 **Summary Statistics**
 
 We decided to use both the Chi-Squared Test for Independence and the Test for difference of means. The Chi-Squared Test for Independence helps determine if the two variables are likely to be related. As we are measuring whether the Bechdel test affects success, knowing if the two variables are likely to be related can be a good first step. We are also using the difference in means test, also known as the t-test, to see if both ratings and income are influenced by the Bechdel test. Since both of these are numeric values, a difference in means is very helpful in determining if there is a meaningful difference when taking into account the Bechdel test.
 
-
 Chi Squared Test for Independence for IMDB:
 
 While the IMDB score is a numerical value, we divided it into categorys. Because we are dividing it into categories, we are able to use the Chi-Squared Test for Independence. We chose to alter the data because in our first graph we altered the data in the same way and this may help us draw better conclusions.
 
-$\H_o:$ IMDB Rating and passing the Bechdel test are independent of each other.
-$\H_a$ IMDB Rating and passing the Bechdel test are not independent of each other.
+$\H_o:$ IMDB Rating and passing the Bechdel test are independent of each other. $\H_a$ IMDB Rating and passing the Bechdel test are not independent of each other.
 
 ```{r}
-#| label: chi-squared
+#|label: chi-squared
 
 chisq.test(bechdel$type, bechdel$binary)
 ```
@@ -172,7 +170,7 @@ After running our Chi-Squared we found the p value to be 7.237e-06. Because our 
 Difference in Means for IMDB ratings:
 
 ```{r}
-#| label: diff-in-ratings
+#|label: diff-in-ratings
 
 bechdel |>
   filter(imdb_rating != "#N/A") |>
@@ -188,7 +186,7 @@ $H_o: \mu_f - \mu_p$ = 0
 $H_a: \mu_f - \mu_p >$ 0
 
 ```{r}
-#| label: permute-test
+#|label: permute-test
 
 bechdel <- bechdel |>
   mutate (
@@ -203,7 +201,7 @@ null_dist2 <- bechdel |>
 ```
 
 ```{r}
-#| label: p-val
+#|label: p-val
 
 null_dist2 |>
   get_p_value(obs_stat = 0.284488, direction = "greater")
@@ -224,11 +222,10 @@ null_dist2 |>
 
 -   Assuming that the true mean IMDB rating for movies that fail the Bechdel test is equal to the the true mean IMDB rating for movies that pass the Bechdel test, the probability that we observe a sample mean of 0.284488 or greater is less than 0.001. Since our p-value is less than 0.05 we reject the null hypothesis and conclude the alternative hypothesis that movies that fail the Bechdel test have a greater true mean IMDB rating
 
-
 Difference in Means test for income generated:
 
 ```{r}
-#| label: diff-in-incomes
+#|label: diff-in-incomes
 
 bechdel |>
   filter(intgross != "#N/A") |>
@@ -244,7 +241,7 @@ $H_o: \mu_f - \mu_p$ = 0
 $H_a: \mu_f - \mu_p >$ 0
 
 ```{r}
-#| label: permute-test
+#|label: permute-test
 
 bechdel <- bechdel |>
   mutate (
@@ -259,7 +256,7 @@ null_dist <- bechdel |>
 ```
 
 ```{r}
-#| label: p-val
+#|label: p-val
 
 null_dist |>
   get_p_value(obs_stat = 32064726, direction = "greater")
@@ -280,21 +277,16 @@ null_dist |>
 
 -   Assuming that the true mean international gross incomes for movies that fail the Bechdel test is equal to the the true mean international gross incomes for movies that pass the Bechdel test, the probability that we observe a sample mean of 32064726 or greater is about 0.001. Since our p-value is less than 0.05 (0.001 \< 0.05) we reject the null hypothesis and conclude the alternative hypothesis that movies that fail the Bechdel test have a greater international gross income.
 
-
 Chi-Squared Test for Independence for Oscar winners:
 
-$\H_o:$ Winning an Oscar and passing the Bechdel test are independent of each other. 
-$\H_a$ Winning an Oscar and passing the Bechdel test are not independent of each other.
+$\H_o:$ Winning an Oscar and passing the Bechdel test are independent of each other. $\H_a$ Winning an Oscar and passing the Bechdel test are not independent of each other.
 
- 
 ```{r}
 chisq.test(bechdel$oscar_won, bechdel$binary)
 ```
- 
- 
+
 After running our Chi-Squared we found the p value to be 0.8659. Because our p-value of 0.8659 is greater than our alpha value of 0.05, we fail to reject the null hypothesis and can not conclude that passing the Bechdel test and winning an Oscar have a correlation.
- 
- 
+
 ## Results
 
 Overall, we conclude that movies that fail the Bechdel Test are more successful in terms of income and ratings. However, for awards, we are unable to conclude that movies that fail the Bechdel Test are less likely to receive an award.
