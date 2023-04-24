@@ -272,7 +272,7 @@ bechdel <- bechdel |>
 null_dist <- bechdel |>
   specify(response = intgross, explanatory = binary) |>
   hypothesize(null = "independence") |>
-  generate(reps = 1000, type = "permute") |>
+  generate(reps = 10000, type = "permute") |>
   calculate(stat = "diff in means", order = c("FAIL", "PASS"))
 ```
 
