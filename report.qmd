@@ -9,7 +9,15 @@ execute:
 
 ## Introduction
 
-From Marilyn Monroe to Legally Blonde, media has always influenced society's perception of gender roles. Historically, these perceptions have put in place expectations that women should be subservient and unambitious compared to men who usually are portrayed as more multidimensional and courageous. In the 2000s, the Bechdel test gained popularity as this gender role discourse grew. First created by the cartoonist Alison Bechdel for the 1985 comic "Dykes to Watch Out For," the basis of the test came from the 1929 essay by Virginia Woolf A Room of One's Own where she observes how women's portrayal in media has been always been confined to their relations to men. According to the comic, a movie passes the Bechdel Test if it satisfies these 3 criteria: there are at least two named women in the picture, they have a conversation with each other at some point, and that conversation isn't about a male character. With the increase in representation and diversity of Hollywood, changes in society values, and record-hitting sales in heavily award movies, and more, we wanted to see how the Bechdel test influences the success of a movie across many different variables. Through this, we believe we are able to understand the gender ideals of our media and how they influence society to a greater degree.
+From Marilyn Monroe to Legally Blonde, media has always influenced society's perception of gender roles. Historically, these perceptions have put in place expectations that women should be subservient and unambitious compared to men who usually are portrayed as more multidimensional and courageous. In the 2000s, the Bechdel test gained popularity as this gender role discourse grew. First created by the cartoonist Alison Bechdel for the 1985 comic "Dykes to Watch Out For," the basis of the test came from the 1929 essay by Virginia Woolf A Room of One's Own where she observes how women's portrayal in media has been always been confined to their relations to men.
+
+According to the comic, a movie passes the Bechdel Test if it satisfies these 3 criteria:
+
+1.  there are at least two named women in the picture,
+2.  they have a conversation with each other at some point,
+3.  and that conversation isn't about a male character.
+
+With the increase in representation and diversity of Hollywood, changes in society values, and record-hitting sales in heavily award movies, and more, we wanted to see how the Bechdel test influences the success of a movie across many different variables. Through this, we believe we are able to understand the gender ideals of our media and how they influence society to a greater degree.
 
 Research Question: Does a movie's passage of the Bechdel test influence its success?
 
@@ -49,7 +57,6 @@ bechdel<- read.csv(file = 'data/bechdel_test.csv')
 
 ```
 
-
 ```{r}
 #| label: IMDB
 bechdel_rating <- bechdel |> 
@@ -77,8 +84,6 @@ bechdel |>
 
 This graph shows the proportion of movies to pass the Bechdel test at different IMDB scores. IMDB scores are out of 10 so each bar represents 2.5 out of the total 10 points with the first being a score of 0-2.5. Movies that fall withing the 2.5-5.0 ranking on IMDB are the most likely to Pass the Bechdel test, while higher-ranked movies are less likely to pass than middle-ranked movies. We decided to use this to show how the Bechdel test might compare to critic ratings to see if there is a correlation.
 
-
-
 ```{r}
 #| label: histogram-year-binary
 bechdel|>
@@ -91,6 +96,7 @@ bechdel|>
   )
 
 ```
+
 This graph shows the amount of movies produced each year in our data set. As seen above, there is a much larger amount of movies produced in more recent years. This may lead to some years have a greater amount of movies that pass the Bechdel test than others. While we do not directly use this to draw conclusions, it is useful in giving an overview of the data we are using.
 
 ```{r}
@@ -107,8 +113,8 @@ bechdel |>
 
  
 ```
-This graph, like the one above, gives more overview data about the dataset we are using. This graph shows how many movies out of the dataset as a whole pass the Bechdel test. As you can see, while a majority of movies do not pass the Bechdel test, it is not significantly skewed.
 
+This graph, like the one above, gives more overview data about the dataset we are using. This graph shows how many movies out of the dataset as a whole pass the Bechdel test. As you can see, while a majority of movies do not pass the Bechdel test, it is not significantly skewed.
 
 ```{r}
 #| label: intgross
@@ -134,6 +140,7 @@ bechdel = bechdel |>
   mutate(oscar_won = if_else(grepl('Oscar', bechdel$awards), ifelse(grepl('Won', bechdel$awards), 'Y', 'N'),'N'))
 
 ```
+
 ```{r}
 #| label: oscar-wins
 
@@ -147,19 +154,18 @@ bechdel |>
     fill = "Bechdel Test Result"
   )
 ```
+
 This graph shows how winning an Oscar reflects on the Bechdel test. Winning an Oscar is one of the most prestegious awards for a film so usually only the best films of the years are considered. Looking at the data, we can see that winning an Oscar does not seem to have much affect on passing the Bechdel test. Because an Oscar is a measure of success, this graph gives great information for us to answer our research question.
 
 **Summary Statistics**
 
 We decided to use both the Chi-Squared Test for Independence and the Test for difference of means. The Chi-Squared Test for Independence helps determine if the two variables are likely to be related. As we are measuring whether the Bechdel test affects success, knowing if the two variables are likely to be related can be a good first step. We are also using the difference in means test, also known as the t-test, to see if both ratings and income are influenced by the Bechdel test. Since both of these are numeric values, a difference in means is very helpful in determining if there is a meaningful difference when taking into account the Bechdel test.
 
-
 Chi Squared Test for Independence for IMDB:
 
 While the IMDB score is a numerical value, we divided it into categorys. Because we are dividing it into categories, we are able to use the Chi-Squared Test for Independence. We chose to alter the data because in our first graph we altered the data in the same way and this may help us draw better conclusions.
 
-$\H_o:$ IMDB Rating and passing the Bechdel test are independent of each other.
-$\H_a$ IMDB Rating and passing the Bechdel test are not independent of each other.
+$\H_o:$ IMDB Rating and passing the Bechdel test are independent of each other. $\H_a$ IMDB Rating and passing the Bechdel test are not independent of each other.
 
 ```{r}
 #| label: chi-squared
@@ -224,7 +230,6 @@ null_dist2 |>
 
 -   Assuming that the true mean IMDB rating for movies that fail the Bechdel test is equal to the the true mean IMDB rating for movies that pass the Bechdel test, the probability that we observe a sample mean of 0.284488 or greater is less than 0.001. Since our p-value is less than 0.05 we reject the null hypothesis and conclude the alternative hypothesis that movies that fail the Bechdel test have a greater true mean IMDB rating
 
-
 Difference in Means test for income generated:
 
 ```{r}
@@ -280,21 +285,16 @@ null_dist |>
 
 -   Assuming that the true mean international gross incomes for movies that fail the Bechdel test is equal to the the true mean international gross incomes for movies that pass the Bechdel test, the probability that we observe a sample mean of 32064726 or greater is about 0.001. Since our p-value is less than 0.05 (0.001 \< 0.05) we reject the null hypothesis and conclude the alternative hypothesis that movies that fail the Bechdel test have a greater international gross income.
 
-
 Chi-Squared Test for Independence for Oscar winners:
 
-$\H_o:$ Winning an Oscar and passing the Bechdel test are independent of each other. 
-$\H_a$ Winning an Oscar and passing the Bechdel test are not independent of each other.
+$\H_o:$ Winning an Oscar and passing the Bechdel test are independent of each other. $\H_a$ Winning an Oscar and passing the Bechdel test are not independent of each other.
 
- 
 ```{r}
 chisq.test(bechdel$oscar_won, bechdel$binary)
 ```
- 
- 
+
 After running our Chi-Squared we found the p value to be 0.8659. Because our p-value of 0.8659 is greater than our alpha value of 0.05, we fail to reject the null hypothesis and can not conclude that passing the Bechdel test and winning an Oscar have a correlation.
- 
- 
+
 ## Results
 
 Overall, we conclude that movies that fail the Bechdel Test are more successful in terms of income and ratings. However, for awards, we are unable to conclude that movies that fail the Bechdel Test are less likely to receive an award.
