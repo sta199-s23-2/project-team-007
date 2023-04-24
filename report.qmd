@@ -9,7 +9,15 @@ execute:
 
 ## Introduction
 
-From Marilyn Monroe to Legally Blonde, media has always influenced society's perception of gender roles. Historically, these perceptions have put in place expectations that women should be subservient and unambitious compared to men who usually are portrayed as more multidimensional and courageous. In the 2000s, the Bechdel test gained popularity as this gender role discourse grew. First created by the cartoonist Alison Bechdel for the 1985 comic "Dykes to Watch Out For," the basis of the test came from the 1929 essay by Virginia Woolf A Room of One's Own where she observes how women's portrayal in media has been always been confined to their relations to men. According to the comic, a movie passes the Bechdel Test if it satisfies these 3 criteria: there are at least two named women in the picture, they have a conversation with each other at some point, and that conversation isn't about a male character. With the increase in representation and diversity of Hollywood, changes in society values, and record-hitting sales in heavily award movies, and more, we wanted to see how the Bechdel test influences the success of a movie across many different variables. Through this, we believe we are able to understand the gender ideals of our media and how they influence society to a greater degree.
+From Marilyn Monroe to Legally Blonde, media has always influenced society's perception of gender roles. Historically, these perceptions have put in place expectations that women should be subservient and unambitious compared to men who usually are portrayed as more multidimensional and courageous. In the 2000s, the Bechdel test gained popularity as this gender role discourse grew. First created by the cartoonist Alison Bechdel for the 1985 comic "Dykes to Watch Out For," the basis of the test came from the 1929 essay by Virginia Woolf A Room of One's Own where she observes how women's portrayal in media has been always been confined to their relations to men.
+
+According to the comic, a movie passes the Bechdel Test if it satisfies these 3 criteria:
+
+1.  there are at least two named women in the picture,
+2.  they have a conversation with each other at some point,
+3.  and that conversation isn't about a male character.
+
+With the increase in representation and diversity of Hollywood, changes in society values, and record-hitting sales in heavily award movies, and more, we wanted to see how the Bechdel test influences the success of a movie across many different variables. Through this, we believe we are able to understand the gender ideals of our media and how they influence society to a greater degree.
 
 Research Question: Does a movie's passage of the Bechdel test influence its success?
 
@@ -74,7 +82,11 @@ bechdel |>
   
 ```
 
+<<<<<<< HEAD
 This graph shows the proportion of movies to pass the Bechdel test at different IMDB scores. IMDB scores are out of 10 so each bar represents 2.5 out of the total 10 points with the first being a score of 0-2.5. Movies that fall withing the 2.5-5.0 ranking on IMDB are the most likely to Pass the bechdel test, while higher-ranked movies are less likely to pass than middle-ranked movies. We decided to use this to show how the Bechdel test might compare to critic ratings to see if there is a correlation.
+=======
+This graph shows the proportion of movies to pass the Bechdel test at different IMDB scores. IMDB scores are out of 10 so each bar represents 2.5 out of the total 10 points with the first being a score of 0-2.5. Movies that fall withing the 2.5-5.0 ranking on IMDB are the most likely to Pass the Bechdel test, while higher-ranked movies are less likely to pass than middle-ranked movies. We decided to use this to show how the Bechdel test might compare to critic ratings to see if there is a correlation.
+>>>>>>> 6ce7c1fa00063b1f65bc6fee3387ac6f02f6ddd3
 
 ```{r}
 #| label: histogram-year-binary
@@ -105,9 +117,15 @@ bechdel |>
 
  
 ```
+<<<<<<< HEAD
 
 This graph, like the one above, gives more overview data about the dataset we are using. This graph shows how many movies out of the dataset as a whole pass the Bechdel test. As you can see, while a majority of movies do not pass the Bechdel test, it is not significantly skewed.
 
+=======
+
+This graph, like the one above, gives more overview data about the dataset we are using. This graph shows how many movies out of the dataset as a whole pass the Bechdel test. As you can see, while a majority of movies do not pass the Bechdel test, it is not significantly skewed.
+
+>>>>>>> 6ce7c1fa00063b1f65bc6fee3387ac6f02f6ddd3
 ```{r}
 #|label: intgross
 
@@ -162,7 +180,7 @@ $\H_o:$ IMDB Rating and passing the Bechdel test are independent of each other. 
 ```{r}
 #|label: chi-squared
 
-chisq.test(bechdel$type, bechdel$binary)
+chisq.test(bechdel$type, bechdel$binary, simulate.p.value = TRUE)
 ```
 
 After running our Chi-Squared we found the p value to be 7.237e-06. Because our p-value of 7.237e-06 is less than our alpha value of 0.05, we reject the null hypothesis and conclude that passing the Bechdel test and IMDB score are not independent observations.
