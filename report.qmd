@@ -29,20 +29,6 @@ For ethical concerns, the Bechdel test has been shown to be flawed in that it se
 
 Data Information:
 
-This data is from fivethirtyeight.com, and was originally collected from IMBD movie data. The data we worked with is from the FiveThirtyEight story titled "The Dollar-And-Cents Case Against Hollywood's Exclusion of Women". After reading this article, we wanted to further explore how a movie's passage of the Bechdel test influences its financial and critic-based success. We chose this set as it contained over 1700 observations of films released from 1970-2013, as well as information on movie budgets, gross/international movie products, awards, movie genre, movie rating, and IMBD ratings.
-
-The observations in this datasets are various movies, and the variables include: year (year movie was released), imdb (imdb code for movie), title (title of movie), test (whether it passes each criterion of the Bechdel test- contains two named female characters, do these two women speak to each other, do they speak to each other about something other than a man), binary (whether the movie passes the Bechdel test) budget (movie budget), domgross (the domestic gross product of the movie, intgross (the international gross product of the movie), and the budget/GDP of the movies converted to 2013 dollars.
-
-Literature:
-
-Our research question sparked from a fivethirtyeight.com article that described how ⅓ of the top 50 movies from 2016 failed the Bechdel Test. The Bechdel Test is a simple test that assesses movies based on three criteria: does a movie have at least two named female characters? Do these named characters have at least one conversation? Is this conversation about something that is not about a man? We were surprised by the number of movies that did not pass this seemingly basic test, even in 2016. This article further explored diversity in the film industry, testing movies on whether the on-set crew were 50% women (of which none of these top 50 movies passed), and explored the racial diversity in the film industry.
-
-To further explore female representation and characterization in the film industry, we want to investigate the relationship between film budget and profit in regard to whether films pass the Bechdel test.
-
-(article: https://projects.fivethirtyeight.com/next-bechdel/)
-
-## Methodology
-
 ```{r, echo=FALSE}
 #| label: load-packages
 #| message: false
@@ -57,10 +43,14 @@ bechdel<- read.csv(file = 'data/bechdel_test.csv')
 
 ```
 
+This data is from fivethirtyeight.com, and was originally collected from IMBD movie data. The data we worked with is from the FiveThirtyEight story titled "The Dollar-And-Cents Case Against Hollywood's Exclusion of Women". After reading this article, we wanted to further explore how a movie's passage of the Bechdel test influences its financial and critic-based success. We chose this set as it contained over 1700 observations of films released from 1970-2013, as well as information on movie budgets, gross/international movie products, awards, movie genre, movie rating, and IMBD ratings.
+
+The observations in this datasets are various movies, and the variables include: year (year movie was released), imdb (imdb code for movie), title (title of movie), test (whether it passes each criterion of the Bechdel test- contains two named female characters, do these two women speak to each other, do they speak to each other about something other than a man), binary (whether the movie passes the Bechdel test) budget (movie budget), domgross (the domestic gross product of the movie, intgross (the international gross product of the movie), and the budget/GDP of the movies converted to 2013 dollars.
+
+**Summary Statistics**
 
 ```{r, echo=FALSE}
-#| label: IMDB
-
+#| label: Sum-stats
 
 bechdel_rating <- bechdel |> 
   group_by(rated) |>
@@ -69,24 +59,19 @@ bechdel$type <- as.factor(ifelse(bechdel$imdb_rating < 2.5, '<2.5',
                           ifelse(bechdel$imdb_rating < 5.0, '2.5-5.0', 
                           ifelse(bechdel$imdb_rating < 7.5, '5.0-7.5', 
                           ifelse(bechdel$imdb_rating < 10.0, '>7.5',0)))))
+
 bechdel |>
   filter(type != 'NA') |>
-  ggplot(aes(x = type, fill = binary)) +
-  geom_bar(position = "fill") +
+  ggplot(aes(x = type)) +
+  geom_bar() +
   scale_x_discrete(limits = c("<2.5", "2.5-5.0", "5.0-7.5", ">7.5")) +
   labs(
-    x = "IMDB Rating Category",
-    y = "Proportion",
-    fill = "Bechdel Test Result",
-    title = "Proportion of Movies that passed Bechdel Test by IMDB Rating"
+    title = "Number of Movies by IMDB Rating Category",
+    x = "IMDB Rating Categoy",
+    y = "Count"
   )
-  
-
-  
 ```
-
-
-This graph shows the proportion of movies to pass the Bechdel test at different IMDB scores. IMDB scores are out of 10 so each bar represents 2.5 out of the total 10 points with the first being a score of 0-2.5. Movies that fall withing the 2.5-5.0 ranking on IMDB are the most likely to Pass the Bechdel test, while higher-ranked movies are less likely to pass than middle-ranked movies. We decided to use this to show how the Bechdel test might compare to critic ratings to see if there is a correlation.
+As shown in the graph above, a majority of movies are between a 5.0 and a 7.5 IMDB rating. Also, there are very few movies that have a rating under 2.5 which may be a factor that we consider later.
 
 ```{r, echo=FALSE}
 #| label: histogram-year-binary
@@ -119,6 +104,39 @@ bechdel |>
 ```
 
 This graph, like the one above, gives more overview data about the dataset we are using. This graph shows how many movies out of the dataset as a whole pass the Bechdel test. As you can see, while a majority of movies do not pass the Bechdel test, it is not significantly skewed.
+
+
+Literature:
+
+Our research question sparked from a fivethirtyeight.com article that described how ⅓ of the top 50 movies from 2016 failed the Bechdel Test. The Bechdel Test is a simple test that assesses movies based on three criteria: does a movie have at least two named female characters? Do these named characters have at least one conversation? Is this conversation about something that is not about a man? We were surprised by the number of movies that did not pass this seemingly basic test, even in 2016. This article further explored diversity in the film industry, testing movies on whether the on-set crew were 50% women (of which none of these top 50 movies passed), and explored the racial diversity in the film industry.
+
+To further explore female representation and characterization in the film industry, we want to investigate the relationship between film budget and profit in regard to whether films pass the Bechdel test.
+
+(article: https://projects.fivethirtyeight.com/next-bechdel/)
+
+## Methodology
+
+```{r, echo=FALSE}
+#| label: IMDB
+
+bechdel |>
+  filter(type != 'NA') |>
+  ggplot(aes(x = type, fill = binary)) +
+  geom_bar(position = "fill") +
+  scale_x_discrete(limits = c("<2.5", "2.5-5.0", "5.0-7.5", ">7.5")) +
+  labs(
+    x = "IMDB Rating Category",
+    y = "Proportion",
+    fill = "Bechdel Test Result",
+    title = "Proportion of Movies that passed Bechdel Test by IMDB Rating"
+  )
+  
+
+  
+```
+
+
+This graph shows the proportion of movies to pass the Bechdel test at different IMDB scores. IMDB scores are out of 10 so each bar represents 2.5 out of the total 10 points with the first being a score of 0-2.5. Our data shows that movies that fall withing the 2.5-5.0 ranking on IMDB are the most likely to Pass the Bechdel test, while higher-ranked movies are less likely to pass than middle-ranked movies. As shown in the summary statistics, there are less movies that have ratings between 0 and 5, with little to no movies having a rating below 2.5. This may cause our graph to be skewed and may explain why the first two categories show different results than the latter two. We decided to use this to show how the Bechdel test might compare to critic ratings to see if there is a correlation.  
 
 
 ```{r, echo=FALSE}
@@ -165,7 +183,7 @@ bechdel |>
 
 This graph shows how winning an Oscar reflects on the Bechdel test. Winning an Oscar is one of the most prestegious awards for a film so usually only the best films of the years are considered. Looking at the data, we can see that winning an Oscar does not seem to have much affect on passing the Bechdel test. Because an Oscar is a measure of success, this graph gives great information for us to answer our research question.
 
-**Summary Statistics**
+## Results
 
 We decided to use both the Chi-Squared Test for Independence and the Test for difference of means. The Chi-Squared Test for Independence helps determine if the two variables are likely to be related. As we are measuring whether the Bechdel test affects success, knowing if the two variables are likely to be related can be a good first step. We are also using the difference in means test, also known as the t-test, to see if both ratings and income are influenced by the Bechdel test. Since both of these are numeric values, a difference in means is very helpful in determining if there is a meaningful difference when taking into account the Bechdel test.
 
@@ -262,7 +280,7 @@ $H_a: \mu_f - \mu_p >$ 0
 
 
 ```{r, echo=FALSE}
-#| label: permute-test
+#| label: permute-test2
 
 bechdel <- bechdel |>
   mutate (
@@ -278,7 +296,7 @@ null_dist <- bechdel |>
 
 
 ```{r, echo=FALSE}
-#| label: p-val
+#| label: p-val2
 
 null_dist |>
   get_p_value(obs_stat = 32064726, direction = "greater")
@@ -311,8 +329,6 @@ chisq.test(bechdel$oscar_won, bechdel$binary)
 ```
 
 After running our Chi-Squared we found the p value to be 0.8659. Because our p-value of 0.8659 is greater than our alpha value of 0.05, we fail to reject the null hypothesis and can not conclude that passing the Bechdel test and winning an Oscar have a correlation.
-
-## Results
 
 Overall, we conclude that movies that fail the Bechdel Test are more successful in terms of income and ratings. However, for awards, we are unable to conclude that movies that fail the Bechdel Test are less likely to receive an award.
 
