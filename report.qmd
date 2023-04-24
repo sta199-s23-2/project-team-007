@@ -75,7 +75,7 @@ bechdel |>
   
 ```
 
-This graph shows the proportion of movies to pass the Bechdel test at different IMDB scores. IMDB scores are out of 10 so each bar represents 2.5 out of the total 10 points with the first being a score of 0-2.5. Movies that fall withing the 2.5-5.0 ranking on IMDB are the most likely to Pass the bechdel test, while higher-ranked movies are less likely to pass than middle-ranked movies. We decided to use this to show how the Bechdel test might compare to critic ratings to see if there is a correlation.
+This graph shows the proportion of movies to pass the Bechdel test at different IMDB scores. IMDB scores are out of 10 so each bar represents 2.5 out of the total 10 points with the first being a score of 0-2.5. Movies that fall withing the 2.5-5.0 ranking on IMDB are the most likely to Pass the Bechdel test, while higher-ranked movies are less likely to pass than middle-ranked movies. We decided to use this to show how the Bechdel test might compare to critic ratings to see if there is a correlation.
 
 
 
@@ -164,7 +164,7 @@ $\H_a$ IMDB Rating and passing the Bechdel test are not independent of each othe
 ```{r}
 #| label: chi-squared
 
-chisq.test(bechdel$type, bechdel$binary)
+chisq.test(bechdel$type, bechdel$binary, simulate.p.value = TRUE)
 ```
 
 After running our Chi-Squared we found the p value to be 7.237e-06. Because our p-value of 7.237e-06 is less than our alpha value of 0.05, we reject the null hypothesis and conclude that passing the Bechdel test and IMDB score are not independent observations.
