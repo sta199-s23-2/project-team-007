@@ -62,15 +62,15 @@ bechdel<- read.csv(file = 'data/bechdel_test.csv')
 bechdel_rating <- bechdel |> 
   group_by(rated) |>
   summarize (n = n())
-bechdel$type <- as.factor(ifelse(bechdel$imdb_rating < 2.5, 'low',
-                          ifelse(bechdel$imdb_rating < 5.0, 'mid1', 
-                          ifelse(bechdel$imdb_rating < 7.5, 'mid2', 
-                          ifelse(bechdel$imdb_rating < 10.0, 'high',0)))))
+bechdel$type <- as.factor(ifelse(bechdel$imdb_rating < 2.5, '<2.5',
+                          ifelse(bechdel$imdb_rating < 5.0, '2.5-5.0', 
+                          ifelse(bechdel$imdb_rating < 7.5, '5.0-7.5', 
+                          ifelse(bechdel$imdb_rating < 10.0, '>7.5',0)))))
 bechdel |>
   filter(type != 'NA') |>
   ggplot(aes(x = type, fill = binary)) +
   geom_bar(position = "fill") +
-  scale_x_discrete(limits = c("low", "mid1", "mid2", "high")) +
+  scale_x_discrete(limits = c("<2.5", "2.5-5.0", "5.0-7.5", ">7.5")) +
   labs(
     x = "IMDB Rating Category",
     y = "Proportion",
