@@ -43,21 +43,21 @@ To further explore female representation and characterization in the film indust
 
 ## Methodology
 
-```{r}
+```{r, echo=FALSE}
 #| label: load-packages
 #| message: false
 library(tidyverse)
 library(tidymodels)
 ```
 
-```{r}
+```{r, echo=FALSE}
 #| label: load-data-wealth-and-income
 
 bechdel<- read.csv(file = 'data/bechdel_test.csv')
 
 ```
 
-```{r}
+```{r, echo=FALSE}
 #| label: IMDB
 bechdel_rating <- bechdel |> 
   group_by(rated) |>
@@ -84,7 +84,7 @@ bechdel |>
 
 This graph shows the proportion of movies to pass the Bechdel test at different IMDB scores. IMDB scores are out of 10 so each bar represents 2.5 out of the total 10 points with the first being a score of 0-2.5. Movies that fall withing the 2.5-5.0 ranking on IMDB are the most likely to Pass the Bechdel test, while higher-ranked movies are less likely to pass than middle-ranked movies. We decided to use this to show how the Bechdel test might compare to critic ratings to see if there is a correlation.
 
-```{r}
+```{r, echo=FALSE}
 #| label: histogram-year-binary
 bechdel|>
   ggplot(aes(x = year)) +
@@ -99,7 +99,7 @@ bechdel|>
 
 This graph shows the amount of movies produced each year in our data set. As seen above, there is a much larger amount of movies produced in more recent years. This may lead to some years have a greater amount of movies that pass the Bechdel test than others. While we do not directly use this to draw conclusions, it is useful in giving an overview of the data we are using.
 
-```{r}
+```{r, echo=FALSE}
 #| label: bar-median-budget
 
 bechdel |>
@@ -116,7 +116,7 @@ bechdel |>
 
 This graph, like the one above, gives more overview data about the dataset we are using. This graph shows how many movies out of the dataset as a whole pass the Bechdel test. As you can see, while a majority of movies do not pass the Bechdel test, it is not significantly skewed.
 
-```{r}
+```{r, echo=FALSE}
 #| label: intgross
 
 bechdel |>
@@ -134,14 +134,14 @@ bechdel |>
 
 This graph shows how international gross income compares to the time period of release and the result of the Bechdel test. As you can see from the graph, in most time periods movies that fail the Bechdel test do better to make money. While this does not include budget for movies, it gives good insight into how gross income relates to the Bechdel test.
 
-```{r}
+```{r, echo=FALSE}
 #| label: rearrange-data
 bechdel = bechdel |>
   mutate(oscar_won = if_else(grepl('Oscar', bechdel$awards), ifelse(grepl('Won', bechdel$awards), 'Y', 'N'),'N'))
 
 ```
 
-```{r}
+```{r, echo=FALSE}
 #| label: oscar-wins
 
 bechdel |>
@@ -167,7 +167,7 @@ While the IMDB score is a numerical value, we divided it into categorys. Because
 
 $\H_o:$ IMDB Rating and passing the Bechdel test are independent of each other. $\H_a$ IMDB Rating and passing the Bechdel test are not independent of each other.
 
-```{r}
+```{r, echo=FALSE}
 #| label: chi-squared
 
 chisq.test(bechdel$type, bechdel$binary, simulate.p.value = TRUE)
@@ -177,7 +177,7 @@ After running our Chi-Squared we found the p value to be 7.237e-06. Because our 
 
 Difference in Means for IMDB ratings:
 
-```{r}
+```{r, echo=FALSE}
 #| label: diff-in-ratings
 
 bechdel |>
@@ -193,7 +193,7 @@ $H_o: \mu_f - \mu_p$ = 0
 
 $H_a: \mu_f - \mu_p >$ 0
 
-```{r}
+```{r, echo=FALSE}
 #| label: permute-test
 
 bechdel <- bechdel |>
@@ -208,7 +208,7 @@ null_dist2 <- bechdel |>
   calculate(stat = "diff in means", order = c("FAIL", "PASS"))
 ```
 
-```{r}
+```{r, echo=FALSE}
 #| label: p-val
 
 null_dist2 |>
@@ -232,7 +232,7 @@ null_dist2 |>
 
 Difference in Means test for income generated:
 
-```{r}
+```{r, echo=FALSE}
 #| label: diff-in-incomes
 
 bechdel |>
@@ -248,7 +248,7 @@ $H_o: \mu_f - \mu_p$ = 0
 
 $H_a: \mu_f - \mu_p >$ 0
 
-```{r}
+```{r, echo=FALSE}
 #| label: permute-test
 
 bechdel <- bechdel |>
@@ -263,7 +263,7 @@ null_dist <- bechdel |>
   calculate(stat = "diff in means", order = c("FAIL", "PASS"))
 ```
 
-```{r}
+```{r, echo=FALSE}
 #| label: p-val
 
 null_dist |>
@@ -289,7 +289,10 @@ Chi-Squared Test for Independence for Oscar winners:
 
 $\H_o:$ Winning an Oscar and passing the Bechdel test are independent of each other. $\H_a$ Winning an Oscar and passing the Bechdel test are not independent of each other.
 
-```{r}
+```{r, echo=FALSE}
+
+#| label: chi-test-oscar-pass
+
 chisq.test(bechdel$oscar_won, bechdel$binary)
 ```
 
