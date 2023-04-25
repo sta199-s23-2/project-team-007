@@ -151,7 +151,7 @@ bechdel |>
   geom_boxplot() +
   ylim(0, 1.0e+09) +
   labs(
-    title = "Movies by period, international gross income, and Bechdel test result",
+    title = "Movies by period, international gross income, \n and Bechdel test result",
     y = "International Gross Income",
     x = "Time Period (1 is newest, 5 is oldest)",
     color = "Bechdel Test Result"
