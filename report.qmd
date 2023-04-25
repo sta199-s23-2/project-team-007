@@ -1,5 +1,5 @@
 ---
-title: "The Relationship between Race and Wealth in U.S. history over Time"
+title: "Success and Sexism in Movies"
 subtitle: "Report"
 format: html
 editor: visual
