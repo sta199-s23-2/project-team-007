@@ -63,13 +63,14 @@ bechdel$type <- as.factor(ifelse(bechdel$imdb_rating < 2.5, '<2.5',
 bechdel |>
   filter(type != 'NA') |>
   ggplot(aes(x = type)) +
-  geom_bar() +
+  geom_bar(fill = "#FFD700", color = "black") +
   scale_x_discrete(limits = c("<2.5", "2.5-5.0", "5.0-7.5", ">7.5")) +
   labs(
     title = "Number of Movies by IMDB Rating Category",
     x = "IMDB Rating Categoy",
     y = "Count"
-  )
+  ) +
+  theme_dark()
 ```
 As shown in the graph above, a majority of movies are between a 5.0 and a 7.5 IMDB rating. Also, there are very few movies that have a rating under 2.5 which may be a factor that we consider later.
 
@@ -77,12 +78,13 @@ As shown in the graph above, a majority of movies are between a 5.0 and a 7.5 IM
 #| label: histogram-year-binary
 bechdel|>
   ggplot(aes(x = year)) +
-  geom_histogram(bins = 43) +
+  geom_histogram(bins = 43, fill = "#FFD700", color = "black") +
   labs(
     title = "Number of Movies by Year",
     x = "Year",
     y = "Count"
-  )
+  ) +
+  theme_dark()
 
 ```
 
@@ -93,12 +95,13 @@ This graph shows the amount of movies produced each year in our data set. As see
 
 bechdel |>
   ggplot(aes(x = binary)) +
-  geom_bar() +
+  geom_bar(fill = "#FFD700", color = "black") +
   labs(
     title = "Number of Movies that Passed/Failed the Bechdel Test",
     x = "Bechdel Test Result",
     y = "Count"
-  )
+  ) +
+  theme_dark()
 
  
 ```
