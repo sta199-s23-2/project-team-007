@@ -10,15 +10,23 @@ execute:
 
 ## Introduction and Literature Review
 
-From Marilyn Monroe to Legally Blonde, media has always influenced society's perception of gender roles. Historically, these perceptions have put in place expectations that women should be subservient and unambitious compared to men who usually are portrayed as more multidimensional and courageous. In the 2000s, the Bechdel test gained popularity as this gender role discourse grew. First created by the cartoonist Alison Bechdel for the 1985 comic "Dykes to Watch Out For," the basis of the test came from the 1929 essay by Virginia Woolf "A Room of One's Own" where she observes how women's portrayal in media has been always been confined to their relations to men. Our research question sparked from a fivethirtyeight.com article that described how ⅓ of the top 50 movies from 2016 failed the Bechdel Test. We were surprised by the number of movies that did not pass this seemingly basic test, even in 2016. This article further explored diversity in the film industry, testing movies on whether the on-set crew were 50% women (of which none of these top 50 movies passed), and explored racial diversity in the film industry.
+From Marilyn Monroe to Legally Blonde, media has always influenced society's perception of gender roles. Historically, these perceptions have put in place expectations that women should be subservient and unambitious compared to men who usually are portrayed as more multidimensional and courageous. In the 2000s, the Bechdel test gained popularity as this gender role discourse grew. First created by the cartoonist Alison Bechdel for the 1985 comic "Dykes to Watch Out For," the basis of the test came from the 1929 essay by Virginia Woolf "A Room of One's Own" where she observes how women's portrayal in media has been always been confined to their relations to men[^1]. Our research question sparked from a fivethirtyeight.com article that described how ⅓ of the top 50 movies from 2016 failed the Bechdel Test[^2]. We were surprised by the number of movies that did not pass this seemingly basic test, even in 2016. This article further explored diversity in the film industry, testing movies on whether the on-set crew were 50% women (of which none of these top 50 movies passed), and explored racial diversity in the film industry.
 
-(article: https://projects.fivethirtyeight.com/next-bechdel/)
+[^1]: *What is the Bechdel test? A shorthand for measuring representation in movies*. (2023, April 5). NPR. https://www.npr.org/2023/04/05/1168116147/what-is-the-bechdel-test-a-shorthand-for-measuring-representation-in-movies#:\~:text=Transcript-
 
-(article: https://www.backstage.com/magazine/article/what-is-the-bechdel-test-75534/)
+    ‌
+
+    ‌
+
+[^2]: Dottle, R. (2017, December 21). *Creating The Next Bechdel Test*. FiveThirtyEight; FiveThirtyEight. https://projects.fivethirtyeight.com/next-bechdel/
+
+    ‌
 
 To further explore female representation and characterization in the film industry, we want to investigate the relationship between film budget and profit in regard to whether films pass the Bechdel test.
 
-According to the comic, a movie passes the Bechdel Test if it satisfies these 3 criteria:
+According to the comic, a movie passes the Bechdel Test if it satisfies these 3 criteria[^3]:
+
+[^3]: Neville, Lois. (2022). *What is the bechdel test? movies that pass & fail \| backstage*. What Is the Bechdel Test? Retrieved April 28, 2023, from https://www.backstage.com/magazine/article/what-is-the-bechdel-test-75534/
 
 1.  there are at least two named women in the picture,
 2.  they have a conversation with each other at some point,
@@ -50,7 +58,11 @@ bechdel<- read.csv(file = 'data/bechdel_test.csv')
 
 ```
 
-This data is from fivethirtyeight.com, and was originally collected from IMDB movie data. IMDB is a database that contains information on films that are released. IMDB users are also able to give ratings to movies and the overall score is displayed for each movie. The data we worked with is from the FiveThirtyEight story titled "The Dollar-And-Cents Case Against Hollywood's Exclusion of Women". After reading this article, we wanted to further explore how a movie's passage of the Bechdel test influences its financial and critic-based success. We chose this set as it contained over 1700 observations of films released from 1970-2013, as well as information on movie budgets, gross/international movie products, awards, movie genre, movie rating, and IMDB ratings.
+This data is from fivethirtyeight.com, and was originally collected from IMDB movie data. IMDB is a database that contains information on films that are released. IMDB users are also able to give ratings to movies and the overall score is displayed for each movie. The data we worked with is from the FiveThirtyEight story titled "The Dollar-And-Cents Case Against Hollywood's Exclusion of Women"[^4]. After reading this article, we wanted to further explore how a movie's passage of the Bechdel test influences its financial and critic-based success. We chose this set as it contained over 1700 observations of films released from 1970-2013, as well as information on movie budgets, gross/international movie products, awards, movie genre, movie rating, and IMDB ratings.
+
+[^4]: Hickey, W. (2014, April 1). *The Dollar-And-Cents Case Against Hollywood\'s Exclusion of Women*. FiveThirtyEight. https://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/
+
+    ‌
 
 The observations in this datasets are various movies, and the variables include: year (year movie was released), imdb (imdb code for movie), title (title of movie), test (whether it passes each criterion of the Bechdel test- contains two named female characters, do these two women speak to each other, do they speak to each other about something other than a man), binary (whether the movie passes the Bechdel test) budget (movie budget), domgross (the domestic gross product of the movie, intgross (the international gross product of the movie), and the budget/GDP of the movies converted to 2013 dollars.
 
@@ -341,5 +353,3 @@ Finally for awards, we calculated a p-value of 0.8659. As a result, we fail to r
 Despite the lack of evidence in awards, we found that the overall success regarding ratings and income in movies increases when such movies fail the Bechdel Test. From our low p-values in both our hypothesis tests and chi-squared tests, we have significant evidence that movies that fail the Bechdel Test have higher ratings and income than those that do. On the other hand, as awards are chosen by a small committee with certain guidelines in place, it makes sense for them not to show a significant difference regarding the Bechdel Test as many biases and politics are at play. One the other hand, ratings and income are dictated by the overall viewers showing the greater societal values and trends in viewership.
 
 For the future, there are many other variables we can explore regarding the Bechdel test in our data such as certain actors, director, country, language, and a description of plot. Perhaps exploring how culture affects the Bechdel test results through language and country would be more insightful than just looking at all movies. In addition, there could be some third variable problems inside our results as other variables could explain success in movies along with the Bechdel test. Looking at a linear regression across all our variables would help to explain this issue.
-
-## Bibliography
