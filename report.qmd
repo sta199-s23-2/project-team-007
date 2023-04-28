@@ -9,9 +9,11 @@ execute:
 
 ## Introduction
 
-From Marilyn Monroe to Legally Blonde, media has always influenced society's perception of gender roles. Historically, these perceptions have put in place expectations that women should be subservient and unambitious compared to men who usually are portrayed as more multidimensional and courageous. In the 2000s, the Bechdel test gained popularity as this gender role discourse grew. First created by the cartoonist Alison Bechdel for the 1985 comic "Dykes to Watch Out For," the basis of the test came from the 1929 essay by Virginia Woolf A Room of One's Own where she observes how women's portrayal in media has been always been confined to their relations to men. Our research question sparked from a fivethirtyeight.com article that described how ⅓ of the top 50 movies from 2016 failed the Bechdel Test. We were surprised by the number of movies that did not pass this seemingly basic test, even in 2016. This article further explored diversity in the film industry, testing movies on whether the on-set crew were 50% women (of which none of these top 50 movies passed), and explored racial diversity in the film industry. 
+From Marilyn Monroe to Legally Blonde, media has always influenced society's perception of gender roles. Historically, these perceptions have put in place expectations that women should be subservient and unambitious compared to men who usually are portrayed as more multidimensional and courageous. In the 2000s, the Bechdel test gained popularity as this gender role discourse grew. First created by the cartoonist Alison Bechdel for the 1985 comic "Dykes to Watch Out For," the basis of the test came from the 1929 essay by Virginia Woolf A Room of One's Own where she observes how women's portrayal in media has been always been confined to their relations to men. Our research question sparked from a fivethirtyeight.com article that described how ⅓ of the top 50 movies from 2016 failed the Bechdel Test. We were surprised by the number of movies that did not pass this seemingly basic test, even in 2016. This article further explored diversity in the film industry, testing movies on whether the on-set crew were 50% women (of which none of these top 50 movies passed), and explored racial diversity in the film industry.
 
 (article: https://projects.fivethirtyeight.com/next-bechdel/)
+
+(article: https://www.backstage.com/magazine/article/what-is-the-bechdel-test-75534/)
 
 To further explore female representation and characterization in the film industry, we want to investigate the relationship between film budget and profit in regard to whether films pass the Bechdel test.
 
@@ -76,6 +78,7 @@ bechdel |>
   ) +
   theme_dark()
 ```
+
 As shown in the graph above, a majority of movies are between a 5.0 and a 7.5 IMDB rating. Also, there are very few movies that have a rating under 2.5 which may be a factor that we consider later.
 
 ```{r, echo=FALSE}
@@ -133,9 +136,7 @@ bechdel |>
   
 ```
 
-
-This graph shows the proportion of movies to pass the Bechdel test at different IMDB scores. IMDB scores are out of 10 so each bar represents 2.5 out of the total 10 points with the first being a score of 0-2.5. Our data shows that movies that fall withing the 2.5-5.0 ranking on IMDB are the most likely to Pass the Bechdel test, while higher-ranked movies are less likely to pass than middle-ranked movies. As shown in the summary statistics, there are less movies that have ratings between 0 and 5, with little to no movies having a rating below 2.5. This may cause our graph to be skewed and may explain why the first two categories show different results than the latter two. We decided to use this to show how the Bechdel test might compare to critic ratings to see if there is a correlation.  
-
+This graph shows the proportion of movies to pass the Bechdel test at different IMDB scores. IMDB scores are out of 10 so each bar represents 2.5 out of the total 10 points with the first being a score of 0-2.5. Our data shows that movies that fall withing the 2.5-5.0 ranking on IMDB are the most likely to Pass the Bechdel test, while higher-ranked movies are less likely to pass than middle-ranked movies. As shown in the summary statistics, there are less movies that have ratings between 0 and 5, with little to no movies having a rating below 2.5. This may cause our graph to be skewed and may explain why the first two categories show different results than the latter two. We decided to use this to show how the Bechdel test might compare to critic ratings to see if there is a correlation.
 
 ```{r, echo=FALSE}
 #| label: intgross
@@ -155,7 +156,6 @@ bechdel |>
 
 This graph shows how international gross income compares to the time period of release and the result of the Bechdel test. As you can see from the graph, in most time periods movies that fail the Bechdel test do better to make money. While this does not include budget for movies, it gives good insight into how gross income relates to the Bechdel test.
 
-
 ```{r, echo=FALSE}
 #| label: rearrange-data
 
@@ -163,7 +163,6 @@ bechdel = bechdel |>
   mutate(oscar_won = if_else(grepl('Oscar', bechdel$awards), ifelse(grepl('Won', bechdel$awards), 'Y', 'N'),'N'))
 
 ```
-
 
 ```{r, echo=FALSE}
 #| label: oscar-wins
@@ -191,7 +190,6 @@ While the IMDB score is a numerical value, we divided it into categorys. Because
 
 $\H_o:$ IMDB Rating and passing the Bechdel test are independent of each other. $\H_a$ IMDB Rating and passing the Bechdel test are not independent of each other.
 
-
 ```{r, echo=FALSE}
 #| label: chi-squared
 
@@ -203,7 +201,6 @@ fisher.test(bechdel$type, bechdel$binary)
 After running our Chi-Squared test we received an error that it may be incorrect. Because the 0-2.5 category has less than 5 observations, we need to instead use the Fisher's Exact Test. After running this test we found the p value to be 2.542e-06. Because our p-value of 2.542e-06 is less than our alpha value of 0.05, we reject the null hypothesis and conclude that passing the Bechdel test and IMDB score are not independent observations.
 
 Difference in Means for IMDB ratings:
-
 
 ```{r, echo=FALSE}
 #| label: diff-in-ratings
@@ -220,7 +217,6 @@ $\bar{x_f} - \bar{x_p}$ = 0.284488
 $H_o: \mu_f - \mu_p$ = 0
 
 $H_a: \mu_f - \mu_p >$ 0
-
 
 ```{r, echo=FALSE}
 #| label: permute-test
@@ -261,7 +257,6 @@ null_dist2 |>
 
 Difference in Means test for income generated:
 
-
 ```{r, echo=FALSE}
 #| label: diff-in-incomes
 
@@ -278,7 +273,6 @@ $H_o: \mu_f - \mu_p$ = 0
 
 $H_a: \mu_f - \mu_p >$ 0
 
-
 ```{r, echo=FALSE}
 #| label: permute-test2
 
@@ -293,7 +287,6 @@ null_dist <- bechdel |>
   generate(reps = 10000, type = "permute") |>
   calculate(stat = "diff in means", order = c("FAIL", "PASS"))
 ```
-
 
 ```{r, echo=FALSE}
 #| label: p-val2
@@ -339,3 +332,5 @@ For ratings, we performed a chi-squared test and displayed a bar chart of imdb r
 Finally for awards, we calculated a p-value of 0.8659. As a result, we fail to reject the null hypothesis that winning an Oscar and passing the Bechdel test are independent. Looking at our graph of Oscar Won vs. Bechdel test result, we see a similar trend. The proportion of movies that failed the Bechdel test were about the same whether or not the movies had one an Oscar. We conclude that passing the Bechdel test has little to no effect on whether a movie wins an Oscar.
 
 Despite the lack of evidence in awards, we found that the overall success in movies increases when such movies fail the Bechdel Test. As awards are chosen by a small committee with certain guidelines in place, it makes sense for them not to show a significant difference regarding the Bechdel Test as many biases and politics are at play. One the other hand, ratings and income are dictated by the overall viewers showing the greater societal values of a one-dimesional, dependent ideal women.
+
+For the future, there are many other variables we can explore regarding the Bechdel test in our data such as certain actors, director, country, language, and a description of plot. Perhaps exploring how culture affects the Bechdel test results through language and country would be more insightful than just looking at all movies. In addition, there could be some third variable problems inside our results as other variables could explain success in movies along with the Bechdel test. Looking at a linear regression across all our variables would help to explain this issue.
