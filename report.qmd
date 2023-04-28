@@ -8,7 +8,7 @@ execute:
   warning: false
 ---
 
-## Introduction
+## Introduction and Literature Review
 
 From Marilyn Monroe to Legally Blonde, media has always influenced society's perception of gender roles. Historically, these perceptions have put in place expectations that women should be subservient and unambitious compared to men who usually are portrayed as more multidimensional and courageous. In the 2000s, the Bechdel test gained popularity as this gender role discourse grew. First created by the cartoonist Alison Bechdel for the 1985 comic "Dykes to Watch Out For," the basis of the test came from the 1929 essay by Virginia Woolf A Room of One's Own where she observes how women's portrayal in media has been always been confined to their relations to men. Our research question sparked from a fivethirtyeight.com article that described how ⅓ of the top 50 movies from 2016 failed the Bechdel Test. We were surprised by the number of movies that did not pass this seemingly basic test, even in 2016. This article further explored diversity in the film industry, testing movies on whether the on-set crew were 50% women (of which none of these top 50 movies passed), and explored racial diversity in the film industry.
 
@@ -34,7 +34,7 @@ Across a general trend, we hypothesize movies that fail the Bechdel test will ha
 
 For ethical concerns, the Bechdel test has been shown to be flawed in that it sets a bare minimum rather than a adequate standard. For example, it sets no time standard for women to appear on the screen or address intersectionality by including race, sexuality, disability, or class. Therefore, if a movie or group of movies pass a test, it may seem like it has a good portrayal of women when in reality it still feeds into gender roles and lack of representation of women.
 
-Data Information:
+### Data Information:
 
 ```{r, echo=FALSE}
 #| label: load-packages
@@ -185,7 +185,7 @@ This graph shows how winning an Oscar reflects on the Bechdel test. Winning an O
 
 We decided to use both the Chi-Squared Test for Independence and the Test for difference of means. The Chi-Squared Test for Independence helps determine if the two variables are likely to be related. As we are measuring whether the Bechdel test affects success, knowing if the two variables are likely to be related can be a good first step. We are also using the difference in means test, also known as the t-test, to see if both ratings and income are influenced by the Bechdel test. Since both of these are numeric values, a difference in means is very helpful in determining if there is a meaningful difference when taking into account the Bechdel test.
 
-Chi Squared Test for Independence for IMDB:
+### Chi Squared Test for Independence for IMDB:
 
 While the IMDB score is a numerical value, we divided it into categorys. Because we are dividing it into categories, we are able to use the Chi-Squared Test for Independence. We chose to alter the data because in our first graph we altered the data in the same way and this may help us draw better conclusions.
 
@@ -203,7 +203,7 @@ fisher.test(bechdel$type, bechdel$binary)
 
 After running our Chi-Squared test we received an error that it may be incorrect. Because the 0-2.5 category has less than 5 observations, we need to instead use the Fisher's Exact Test. After running this test we found the p value to be 2.542e-06. Because our p-value of 2.542e-06 is less than our alpha value of 0.05, we reject the null hypothesis and conclude that passing the Bechdel test and IMDB score are not independent observations.
 
-Difference in Means for IMDB ratings:
+### Difference in Means for IMDB ratings:
 
 ```{r, echo=FALSE}
 #| label: diff-in-ratings
@@ -258,7 +258,7 @@ null_dist2 |>
 
 -   Assuming that the true mean IMDB rating for movies that fail the Bechdel test is equal to the the true mean IMDB rating for movies that pass the Bechdel test, the probability that we observe a sample mean of 0.284488 or greater is less than 0.001. Since our p-value is less than 0.05 we reject the null hypothesis and conclude the alternative hypothesis that movies that fail the Bechdel test have a greater true mean IMDB rating
 
-Difference in Means test for income generated:
+### Difference in Means test for income generated:
 
 ```{r, echo=FALSE}
 #| label: diff-in-incomes
@@ -313,7 +313,7 @@ null_dist |>
 
 -   Assuming that the true mean international gross incomes for movies that fail the Bechdel test is equal to the the true mean international gross incomes for movies that pass the Bechdel test, the probability that we observe a sample mean of 32064726 or greater is about 0.001. Since our p-value is less than 0.05 (0.001 \< 0.05) we reject the null hypothesis and conclude the alternative hypothesis that movies that fail the Bechdel test have a greater international gross income.
 
-Chi-Squared Test for Independence for Oscar winners:
+### Chi-Squared Test for Independence for Oscar winners:
 
 $H_o:$ Winning an Oscar and passing the Bechdel test are independent of each other. $H_a$ Winning an Oscar and passing the Bechdel test are not independent of each other.
 
@@ -326,6 +326,8 @@ chisq.test(bechdel$oscar_won, bechdel$binary)
 
 After running our Chi-Squared we found the p value to be 0.8659. Because our p-value of 0.8659 is greater than our alpha value of 0.05, we fail to reject the null hypothesis and can not conclude that passing the Bechdel test and winning an Oscar have a correlation.
 
+## Discussion
+
 Overall, we conclude that movies that fail the Bechdel Test are more successful in terms of income and ratings. However, for awards, we are unable to conclude that movies that fail the Bechdel Test are less likely to receive an award.
 
 For income, we used a box plot and a difference in means distribution to find our results. From the box-plot we found that the true mean income was greater across all time periods. From our null distribution, we found a p-value equal to .001 showing that the difference in the true mean incomes in movies that fail the Bechdel test and movies that pass the Bechdel test is greater than 0. Overall, this shows that more profit is made, and therefore more tickets are bought, when limiting gender roles are present in movies.
@@ -337,3 +339,5 @@ Finally for awards, we calculated a p-value of 0.8659. As a result, we fail to r
 Despite the lack of evidence in awards, we found that the overall success regarding ratings and income in movies increases when such movies fail the Bechdel Test. From our low p-values in both our hypothesis tests and chi-squared tests, we have significant evidence that movies that fail the Bechdel Test have higher ratings and income than those that do. On the other hand, as awards are chosen by a small committee with certain guidelines in place, it makes sense for them not to show a significant difference regarding the Bechdel Test as many biases and politics are at play. One the other hand, ratings and income are dictated by the overall viewers showing the greater societal values and trends in viewership.
 
 For the future, there are many other variables we can explore regarding the Bechdel test in our data such as certain actors, director, country, language, and a description of plot. Perhaps exploring how culture affects the Bechdel test results through language and country would be more insightful than just looking at all movies. In addition, there could be some third variable problems inside our results as other variables could explain success in movies along with the Bechdel test. Looking at a linear regression across all our variables would help to explain this issue.
+
+## Bibliography 
