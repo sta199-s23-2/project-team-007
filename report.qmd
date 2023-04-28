@@ -322,7 +322,8 @@ null_dist |>
 
 Chi-Squared Test for Independence for Oscar winners:
 
-$\H_o:$ Winning an Oscar and passing the Bechdel test are independent of each other. $\H_a$ Winning an Oscar and passing the Bechdel test are not independent of each other.
+$H_o:$ Winning an Oscar and passing the Bechdel test are independent of each other. 
+$H_a$ Winning an Oscar and passing the Bechdel test are not independent of each other.
 
 ```{r, echo=FALSE}
 
