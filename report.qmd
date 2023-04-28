@@ -9,7 +9,11 @@ execute:
 
 ## Introduction
 
-From Marilyn Monroe to Legally Blonde, media has always influenced society's perception of gender roles. Historically, these perceptions have put in place expectations that women should be subservient and unambitious compared to men who usually are portrayed as more multidimensional and courageous. In the 2000s, the Bechdel test gained popularity as this gender role discourse grew. First created by the cartoonist Alison Bechdel for the 1985 comic "Dykes to Watch Out For," the basis of the test came from the 1929 essay by Virginia Woolf A Room of One's Own where she observes how women's portrayal in media has been always been confined to their relations to men.
+From Marilyn Monroe to Legally Blonde, media has always influenced society's perception of gender roles. Historically, these perceptions have put in place expectations that women should be subservient and unambitious compared to men who usually are portrayed as more multidimensional and courageous. In the 2000s, the Bechdel test gained popularity as this gender role discourse grew. First created by the cartoonist Alison Bechdel for the 1985 comic "Dykes to Watch Out For," the basis of the test came from the 1929 essay by Virginia Woolf A Room of One's Own where she observes how women's portrayal in media has been always been confined to their relations to men. Our research question sparked from a fivethirtyeight.com article that described how ⅓ of the top 50 movies from 2016 failed the Bechdel Test. We were surprised by the number of movies that did not pass this seemingly basic test, even in 2016. This article further explored diversity in the film industry, testing movies on whether the on-set crew were 50% women (of which none of these top 50 movies passed), and explored racial diversity in the film industry. 
+
+(article: https://projects.fivethirtyeight.com/next-bechdel/)
+
+To further explore female representation and characterization in the film industry, we want to investigate the relationship between film budget and profit in regard to whether films pass the Bechdel test.
 
 According to the comic, a movie passes the Bechdel Test if it satisfies these 3 criteria:
 
@@ -107,15 +111,6 @@ bechdel |>
 ```
 
 This graph, like the one above, gives more overview data about the dataset we are using. This graph shows how many movies out of the dataset as a whole pass the Bechdel test. As you can see, while a majority of movies do not pass the Bechdel test, it is not significantly skewed.
-
-
-Literature:
-
-Our research question sparked from a fivethirtyeight.com article that described how ⅓ of the top 50 movies from 2016 failed the Bechdel Test. The Bechdel Test is a simple test that assesses movies based on three criteria: does a movie have at least two named female characters? Do these named characters have at least one conversation? Is this conversation about something that is not about a man? We were surprised by the number of movies that did not pass this seemingly basic test, even in 2016. This article further explored diversity in the film industry, testing movies on whether the on-set crew were 50% women (of which none of these top 50 movies passed), and explored racial diversity in the film industry.
-
-To further explore female representation and characterization in the film industry, we want to investigate the relationship between film budget and profit in regard to whether films pass the Bechdel test.
-
-(article: https://projects.fivethirtyeight.com/next-bechdel/)
 
 ## Methodology
 
