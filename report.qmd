@@ -4,7 +4,8 @@ subtitle: "Report"
 format: html
 editor: visual
 execute:
-  echo: true
+  echo: false
+  warning: false
 ---
 
 ## Introduction
@@ -188,7 +189,9 @@ Chi Squared Test for Independence for IMDB:
 
 While the IMDB score is a numerical value, we divided it into categorys. Because we are dividing it into categories, we are able to use the Chi-Squared Test for Independence. We chose to alter the data because in our first graph we altered the data in the same way and this may help us draw better conclusions.
 
-$\H_o:$ IMDB Rating and passing the Bechdel test are independent of each other. $\H_a$ IMDB Rating and passing the Bechdel test are not independent of each other.
+$H_o:$ IMDB Rating and passing the Bechdel test are independent of each other. 
+
+$H_a$ IMDB Rating and passing the Bechdel test are not independent of each other.
 
 ```{r, echo=FALSE}
 #| label: chi-squared
@@ -229,7 +232,7 @@ bechdel <- bechdel |>
 null_dist2 <- bechdel |>
   specify(response = imdb_rating, explanatory = binary) |>
   hypothesize(null = "independence") |>
-  generate(reps = 1000, type = "permute") |>
+  generate(reps = 10000, type = "permute") |>
   calculate(stat = "diff in means", order = c("FAIL", "PASS"))
 ```
 
@@ -312,7 +315,8 @@ null_dist |>
 
 Chi-Squared Test for Independence for Oscar winners:
 
-$\H_o:$ Winning an Oscar and passing the Bechdel test are independent of each other. $\H_a$ Winning an Oscar and passing the Bechdel test are not independent of each other.
+$H_o:$ Winning an Oscar and passing the Bechdel test are independent of each other. 
+$H_a$ Winning an Oscar and passing the Bechdel test are not independent of each other.
 
 ```{r, echo=FALSE}
 
