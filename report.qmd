@@ -189,7 +189,7 @@ Chi Squared Test for Independence for IMDB:
 
 While the IMDB score is a numerical value, we divided it into categorys. Because we are dividing it into categories, we are able to use the Chi-Squared Test for Independence. We chose to alter the data because in our first graph we altered the data in the same way and this may help us draw better conclusions.
 
-$H_o:$ IMDB Rating and passing the Bechdel test are independent of each other. 
+$H_o:$ IMDB Rating and passing the Bechdel test are independent of each other.
 
 $H_a$ IMDB Rating and passing the Bechdel test are not independent of each other.
 
@@ -315,8 +315,7 @@ null_dist |>
 
 Chi-Squared Test for Independence for Oscar winners:
 
-$H_o:$ Winning an Oscar and passing the Bechdel test are independent of each other. 
-$H_a$ Winning an Oscar and passing the Bechdel test are not independent of each other.
+$H_o:$ Winning an Oscar and passing the Bechdel test are independent of each other. $H_a$ Winning an Oscar and passing the Bechdel test are not independent of each other.
 
 ```{r, echo=FALSE}
 
