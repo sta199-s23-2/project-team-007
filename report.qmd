@@ -26,7 +26,7 @@ According to the comic, a movie passes the Bechdel Test if it satisfies these 3 
 
 With the increase in representation and diversity of Hollywood, changes in society values, and record-hitting sales in heavily award movies, and more, we wanted to see how the Bechdel test influences the success of a movie across many different variables. Through this, we believe we are able to understand the gender ideals of our media and how they influence society to a greater degree.
 
-Research Question: Does a movie's passage of the Bechdel test influence its success?
+**Research Question: *Does a movie's passage of the Bechdel test influence its success?***
 
 This question is important as it relates to the level of female representation in the film industry, and the value that the film industry places on female actors, characters, and storylines in film.
 
@@ -340,4 +340,4 @@ Despite the lack of evidence in awards, we found that the overall success regard
 
 For the future, there are many other variables we can explore regarding the Bechdel test in our data such as certain actors, director, country, language, and a description of plot. Perhaps exploring how culture affects the Bechdel test results through language and country would be more insightful than just looking at all movies. In addition, there could be some third variable problems inside our results as other variables could explain success in movies along with the Bechdel test. Looking at a linear regression across all our variables would help to explain this issue.
 
-## Bibliography 
+## Bibliography
