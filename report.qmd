@@ -49,6 +49,7 @@ For ethical concerns, the Bechdel test has been shown to be flawed in that it se
 #| message: false
 library(tidyverse)
 library(tidymodels)
+library(RColorBrewer)
 ```
 
 ```{r, echo=FALSE}
@@ -60,7 +61,7 @@ bechdel<- read.csv(file = 'data/bechdel_test.csv')
 
 This data is from fivethirtyeight.com, and was originally collected from IMDB movie data. IMDB is a database that contains information on films that are released. IMDB users are also able to give ratings to movies and the overall score is displayed for each movie. The data we worked with is from the FiveThirtyEight story titled "The Dollar-And-Cents Case Against Hollywood's Exclusion of Women"[^4]. After reading this article, we wanted to further explore how a movie's passage of the Bechdel test influences its financial and critic-based success. We chose this set as it contained over 1700 observations of films released from 1970-2013, as well as information on movie budgets, gross/international movie products, awards, movie genre, movie rating, and IMDB ratings.
 
-[^4]: Hickey, W. (2014, April 1). *The Dollar-And-Cents Case Against Hollywood\'s Exclusion of Women*. FiveThirtyEight. https://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/
+[^4]: Hickey, W. (2014, April 1). *The Dollar-And-Cents Case Against Hollywood's Exclusion of Women*. FiveThirtyEight. https://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/
 
     ‌
 
@@ -142,8 +143,9 @@ bechdel |>
     x = "IMDB Rating Category",
     y = "Proportion",
     fill = "Bechdel Test Result",
-    title = "Proportion of Movies that passed Bechdel Test by IMDB Rating"
-  )
+    title = "Proportion of Movies that passed Bechdel Test by \n IMDB Rating"
+  ) +
+   scale_fill_brewer(palette = "Set1") 
   
 
   
@@ -164,7 +166,7 @@ bechdel |>
     y = "International Gross Income",
     x = "Time Period (1 is newest, 5 is oldest)",
     color = "Bechdel Test Result"
-  )
+  ) 
 ```
 
 This graph shows how international gross income compares to the time period of release and the result of the Bechdel test. As you can see from the graph, in most time periods movies that fail the Bechdel test do better to make money. While this does not include budget for movies, it gives good insight into how gross income relates to the Bechdel test.
@@ -188,7 +190,8 @@ bechdel |>
     y = "Proportion",
     x = "Oscar Won/Lost",
     fill = "Bechdel Test Result"
-  )
+  ) +
+  scale_fill_brewer(palette = "Set3") 
 ```
 
 This graph shows how winning an Oscar reflects on the Bechdel test. Winning an Oscar is one of the most prestegious awards for a film so usually only the best films of the years are considered. Looking at the data, we can see that winning an Oscar does not seem to have much affect on passing the Bechdel test. Because an Oscar is a measure of success, this graph gives great information for us to answer our research question.
@@ -329,7 +332,9 @@ null_dist |>
 
 ### Chi-Squared Test for Independence for Oscar winners:
 
-$H_o:$ Winning an Oscar and passing the Bechdel test are independent of each other. $H_a$ Winning an Oscar and passing the Bechdel test are not independent of each other.
+$H_o:$ Winning an Oscar and passing the Bechdel test are independent of each other.
+
+$H_a$ Winning an Oscar and passing the Bechdel test are not independent of each other.
 
 ```{r, echo=FALSE}
 
